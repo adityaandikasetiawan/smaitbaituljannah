@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMPTI Baituljannah - Sekolah Teknologi Informasi</title>
+  <title>SMA IT Baituljannah - Sekolah Islam Terpadu</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,16 +39,20 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Masthead Section -->
-    <section data-anim-wrap class="masthead -type-3 bg-light-6 js-mouse-move-container">
-      <div class="container">
+    <section data-anim-wrap class="masthead -type-3 elegant-hero-section js-mouse-move-container bg-white">
+      <div class="container relative z-10">
         <div class="row y-gap-30 items-center justify-center">
           <div class="col-xl-7 col-lg-11 relative z-5">
             <div class="masthead__content pl-32 lg:pl-0">
-              <h1 data-anim-child="slide-up delay-1" class="masthead__title">
+              <div class="elegant-welcome-badge mb-20" data-anim-child="slide-up delay-1">
+                <span class="badge bg-blue-1 text-white px-4 py-2">Excellence in Education</span>
+              </div>
+              
+              <h1 data-anim-child="slide-up delay-1" class="masthead__title text-dark-1 elegant-title">
                 <%= schoolContent.beranda.welcome_message %>
               </h1>
 
-              <p data-anim-child="slide-up delay-2" class="masthead__text text-17 text-dark-1 mt-25">
+              <p data-anim-child="slide-up delay-2" class="masthead__text text-17 text-dark-3 mt-25 elegant-description">
                 <%= schoolContent.beranda.description %>
               </p>
 
@@ -56,16 +60,16 @@
                 <div class="masthead-search__form">
                   <form action="/search" method="GET">
                     <input type="text" name="q" placeholder="Cari informasi sekolah, program, atau fasilitas...">
-                    <button type="submit" class="button -purple-1 text-white">
+                    <button type="submit" class="button elegant-cta-btn -blue-1 text-white">
                       <i class="icon icon-search"></i>
                     </button>
                   </form>
                 </div>
 
-                <div class="masthead-search__searches mt-40">
+                <div class="masthead-search__searches mt-40 text-dark-3">
                   Program Unggulan:
                   <% schoolContent.program_unggulan.slice(0, 4).forEach((program, index) => { %>
-                    <a href="/program-unggulan#<%= program.name.toLowerCase().replace(/\s+/g, '-') %>"><%= program.name %></a><%= index < 3 ? ',' : '' %>
+                    <a href="/program-unggulan#<%= program.name.toLowerCase().replace(/\s+/g, '-') %>" class="text-blue-1"><%= program.name %></a><%= index < 3 ? ',' : '' %>
                   <% }); %>
                 </div>
               </div>

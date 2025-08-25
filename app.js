@@ -594,7 +594,7 @@ app.get('/pertanyaan-umum', (req, res) => {
 
 // Contact routes
 app.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Kontak - Baituljannah' });
+  res.render('contact', { title: 'Kontak - SMA IT Baituljannah' });
 });
 
 app.post('/contact', [
@@ -606,7 +606,7 @@ app.post('/contact', [
   
   if (!errors.isEmpty()) {
     return res.render('contact', {
-      title: 'Kontak - Baituljannah',
+      title: 'Kontak - SMA IT Baituljannah',
       errors: errors.array().map(err => err.msg),
       formData: req.body
     });
@@ -622,14 +622,14 @@ app.post('/contact', [
   });
   
   res.render('contact', {
-    title: 'Kontak - Baituljannah',
+    title: 'Kontak - SMA IT Baituljannah',
     success: true
   });
 });
 
 // Authentication routes
 app.get('/login', (req, res) => {
-  res.render('login', { title: 'Login - Baituljannah' });
+  res.render('login', { title: 'Login - SMA IT Baituljannah' });
 });
 
 app.post('/login', [
