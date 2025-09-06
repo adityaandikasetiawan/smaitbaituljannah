@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <rect width="400" height="200" fill="#f8f9fa"/>
+  <rect x="50" y="50" width="300" height="100" fill="#e9ecef" rx="8"/>
+  <circle cx="120" cy="80" r="15" fill="#6c757d"/>
+  <rect x="150" y="70" width="180" height="8" fill="#6c757d" rx="4"/>
+  <rect x="150" y="85" width="120" height="6" fill="#adb5bd" rx="3"/>
+  <rect x="150" y="100" width="200" height="6" fill="#adb5bd" rx="3"/>
+  <rect x="150" y="115" width="160" height="6" fill="#adb5bd" rx="3"/>
+  <text x="200" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6c757d">SMAIT Baituljannah</text>
+</svg>

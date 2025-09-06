@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Pendaftaran - SMAIT Baituljannah</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/img/general/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/general/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/general/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/general/apple-touch-icon.png">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader js-preloader">
+    <div class="preloader__wrap">
+      <div class="preloader__icon">
+        <i class="icon icon-loading"></i>
+      </div>
+    </div>
+  </div>
+  
+  <%- include('partials/header') %>
+  
+  <!-- Hero Section -->
+  <%- include('partials/informasi-pendaftaran/hero-section') %>
+  
+  <!-- Persyaratan Pendaftaran -->
+  <%- include('partials/informasi-pendaftaran/persyaratan-section') %>
+  
+  <!-- Tahapan Pendaftaran -->
+  <%- include('partials/informasi-pendaftaran/tahapan-section') %>
+  
+  <!-- Biaya Pendaftaran -->
+  <%- include('partials/informasi-pendaftaran/biaya-section') %>
+  
+  <!-- Jadwal Pendaftaran -->
+  <%- include('partials/informasi-pendaftaran/jadwal-section') %>
+  
+  <!-- Kontak Informasi -->
+  <%- include('partials/informasi-pendaftaran/kontak-section') %>
+  
+  <!-- Call to Action -->
+  <%- include('partials/informasi-pendaftaran/cta-section') %>
+
+  <%- include('partials/footer') %>
+  
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="/js/vendors.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

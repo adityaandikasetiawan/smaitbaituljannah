@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - SMPIT Baituljannah</title>
+    <title>Admin Dashboard - SMAIT Baituljannah</title>
     <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -139,7 +139,7 @@
                             <i class="fas fa-graduation-cap me-2"></i>
                             Admin Panel
                         </h4>
-                        <small class="opacity-75">SMPIT Baituljannah</small>
+                        <small class="opacity-75">SMAIT Baituljannah</small>
                     </div>
                     <nav class="nav flex-column px-3">
                         <a class="nav-link active" href="/admin/dashboard">
@@ -322,13 +322,24 @@
     <script src="/js/datatables/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Check if table has data rows before initializing DataTables
+            const tableBody = $('#registrationsTable tbody');
+            const hasData = tableBody.find('tr').length > 0 && !tableBody.find('tr').first().find('td[colspan]').length;
+            
             $('#registrationsTable').DataTable({
                 "pageLength": 10,
-                "ordering": true,
+                "ordering": hasData,
                 "searching": false,
                 "lengthChange": false,
                 "info": false,
-                "paging": false
+                "paging": false,
+                "columnDefs": hasData ? [] : [
+                    { "orderable": false, "targets": "_all" }
+                ],
+                "language": {
+                    "emptyTable": "Belum ada data pendaftaran",
+                    "zeroRecords": "Tidak ada data yang sesuai"
+                }
             });
         });
     </script>

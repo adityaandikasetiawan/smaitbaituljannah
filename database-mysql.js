@@ -6,7 +6,7 @@ const dbConfig = {
   host: 'localhost',
   user: 'root',
   password: '', // Default XAMPP MySQL password is empty
-  database: 'smp_baituljannah',
+  database: 'smait_baituljannah',
   port: 3306,
   charset: 'utf8mb4'
 };
@@ -155,7 +155,7 @@ async function insertDefaultAdmin() {
       const defaultPassword = await bcrypt.hash('admin123', 10);
       await connection.execute(
         'INSERT INTO admin_users (username, email, password, full_name, role) VALUES (?, ?, ?, ?, ?)',
-        ['admin', 'admin@smpbaituljannah.sch.id', defaultPassword, 'Administrator', 'super_admin']
+        ['admin', 'admin@smaitbaituljannah.sch.id', defaultPassword, 'Administrator', 'super_admin']
       );
       console.log('Default admin user created');
     }
@@ -577,6 +577,19 @@ const dbHelpers = {
         [slug]
       );
       return rows[0] || null;
+    } finally {
+      connection.release();
+    }
+  },
+
+  getRelatedNews: async (excludeId, limit = 3) => {
+    const connection = await pool.getConnection();
+    try {
+      const [rows] = await connection.execute(
+        'SELECT n.*, au.username as author_name, au.full_name as author_full_name FROM news n LEFT JOIN admin_users au ON n.author_id = au.id WHERE n.id != ? AND n.status = "published" ORDER BY n.created_at DESC LIMIT ?',
+        [excludeId, limit]
+      );
+      return rows;
     } finally {
       connection.release();
     }

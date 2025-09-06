@@ -1,0 +1,27 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="40" cy="40" r="35" fill="#2D5016" stroke="#D4AF37" stroke-width="2"/>
+  
+  <!-- Islamic Crescent and Star -->
+  <path d="M25 35 Q30 25 35 35 Q30 45 25 35" fill="#D4AF37"/>
+  <polygon points="42,28 44,32 48,32 45,35 46,39 42,37 38,39 39,35 36,32 40,32" fill="#D4AF37"/>
+  
+  <!-- Arabic Calligraphy Style Text -->
+  <path d="M20 50 Q25 45 30 50 Q35 55 40 50 Q45 45 50 50 Q55 55 60 50" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+  
+  <!-- School Name -->
+  <text x="90" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2D5016">SMAIT</text>
+  <text x="90" y="42" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#D4AF37">Baituljannah</text>
+  <text x="90" y="55" font-family="Arial, sans-serif" font-size="10" fill="#666">Sekolah Menengah Atas Islam Terpadu</text>
+  
+  <!-- Decorative Islamic Pattern -->
+  <g transform="translate(15,15)">
+    <path d="M0,0 L10,0 L5,8.66 Z" fill="#D4AF37" opacity="0.3"/>
+    <path d="M0,17.32 L10,17.32 L5,8.66 Z" fill="#D4AF37" opacity="0.3"/>
+  </g>
+  
+  <g transform="translate(55,15)">
+    <path d="M0,0 L10,0 L5,8.66 Z" fill="#D4AF37" opacity="0.3"/>
+    <path d="M0,17.32 L10,17.32 L5,8.66 Z" fill="#D4AF37" opacity="0.3"/>
+  </g>
+</svg>

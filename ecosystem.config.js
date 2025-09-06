@@ -1,21 +1,21 @@
 module.exports = {
   apps: [{
-    name: 'smpit-baituljannah',
+    name: 'smait-baituljannah',
     script: './app.js',
-    cwd: '/var/www/html/smpbaituljannah',
+    cwd: '/var/www/html/smaitbaituljannah',
     instances: 1,
     exec_mode: 'cluster',
     env: {
       NODE_ENV: 'production',
       PORT: 3002,
       HOST: '36.66.42.227',
-      SESSION_SECRET: 'smpit-baituljannah-secret-2024'
+      SESSION_SECRET: 'smait-baituljannah-secret-2024'
     },
     env_production: {
       NODE_ENV: 'production',
       PORT: 3002,
       HOST: '36.66.42.227',
-      SESSION_SECRET: 'smpit-baituljannah-secret-2024'
+      SESSION_SECRET: 'smait-baituljannah-secret-2024'
     },
     merge_logs: true,
     time: true,

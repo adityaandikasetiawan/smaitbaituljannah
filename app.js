@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 console.log('App.js loaded, setting up middleware...');
+console.log('=== FILE VERSION CHECK: 2025-09-05-11:40 ===');
 console.log('=== TESTING CONSOLE LOG FUNCTIONALITY ===');
 
 // Create uploads directory if it doesn't exist
@@ -102,11 +103,26 @@ app.use(session({
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// SIMPLE REQUEST LOGGER
+app.use((req, res, next) => {
+  console.log('=== INCOMING REQUEST ===');
+  console.log('Method:', req.method);
+  console.log('URL:', req.url);
+  console.log('Path:', req.path);
+  console.log('========================');
+  next();
+});
+
 // HTTP request logging
 app.use(morgan('combined'));
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
+
+// SUPER EARLY TEST ROUTE - RIGHT AFTER STATIC
+app.get('/super-early-test', (req, res) => {
+  res.send('SUPER EARLY TEST WORKS');
+});
 
 // Authentication middleware
 app.use((req, res, next) => {
@@ -120,6 +136,11 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
   res.locals.isAuthenticated = !!req.session.user;
   next();
+});
+
+// IMMEDIATE TEST ROUTE - RIGHT AFTER MIDDLEWARE
+app.get('/immediate-test', (req, res) => {
+  res.send('IMMEDIATE TEST WORKS - AFTER MIDDLEWARE');
 });
 
 // Simple in-memory user database (replace with real database in production)
@@ -252,7 +273,7 @@ const testimonialsData = [
     role: 'Web Developer',
     image: '/img/testimonials/1.png',
     rating: 5,
-    text: 'SMPIT Baituljannah telah mengubah pengalaman belajar saya. Program-programnya terstruktur dengan baik dan para pengajar sangat berkualitas.'
+    text: 'SMAIT Baituljannah telah mengubah pengalaman belajar saya. Program-programnya terstruktur dengan baik dan para pengajar sangat berkualitas.'
   },
   {
     id: 2,
@@ -539,20 +560,62 @@ const courseDetailData = {
 let messages = [];
 
 // Routes
+// EMERGENCY MINIMAL TEST - NO MIDDLEWARE INTERFERENCE
+app.get('/minimal-test', (req, res) => {
+  res.send('MINIMAL TEST SUCCESS');
+});
+
+console.log('=== ROUTES REGISTRATION CHECKPOINT ===');
+console.log('Routes should be registered now');
+
+// Ultra simple test route
+app.get('/ultra-test', (req, res) => {
+  res.send('ULTRA TEST WORKS');
+});
+
+// Early test route to debug routing (moved to top)
+app.get('/early-test', (req, res) => {
+  console.log('=== EARLY TEST ROUTE ACCESSED ===');
+  res.json({ message: 'Early test route working', timestamp: new Date().toISOString() });
+});
+
 // Simple test route
 app.get('/simple-test', (req, res) => {
   console.log('=== SIMPLE TEST ROUTE ACCESSED ===');
   res.json({ message: 'Simple test route working', timestamp: new Date().toISOString() });
 });
 
-app.get('/', (req, res) => {
-  res.render('home', {
-    title: 'SMPIT Baituljannah - Sekolah Islam Terpadu',
-    categories: categoriesData,
-    courses: coursesData,
-    testimonials: testimonialsData,
-    schoolContent: schoolContent
-  });
+// New test route to verify routing works
+app.get('/new-test-route', (req, res) => {
+  console.log('=== NEW TEST ROUTE ACCESSED ===');
+  res.json({ message: 'New test route working', timestamp: new Date().toISOString() });
+});
+
+app.get('/', async (req, res) => {
+  try {
+    // Get latest published news for homepage
+    const latestNews = await dbHelpers.getAllNews({ status: 'published', limit: 3 });
+    
+    res.render('home', {
+      title: 'SMAIT Baituljannah - Sekolah Islam Terpadu',
+      categories: categoriesData,
+      courses: coursesData,
+      testimonials: testimonialsData,
+      schoolContent: schoolContent,
+      latestNews: latestNews || []
+    });
+  } catch (error) {
+    console.error('Error fetching news for homepage:', error);
+    // Fallback to render without news if there's an error
+    res.render('home', {
+      title: 'SMAIT Baituljannah - Sekolah Islam Terpadu',
+      categories: categoriesData,
+      courses: coursesData,
+      testimonials: testimonialsData,
+      schoolContent: schoolContent,
+      latestNews: []
+    });
+  }
 });
 
 app.get('/courses', (req, res) => {
@@ -668,6 +731,22 @@ app.get('/pertanyaan-umum', (req, res) => {
   });
 });
 
+app.get('/test-route-debug', (req, res) => {
+  console.log('=== TEST ROUTE ACCESSED ===');
+  res.json({ message: 'Test route working', timestamp: new Date() });
+});
+
+app.get('/informasi-pendaftaran', (req, res) => {
+  console.log('=== INFORMASI PENDAFTARAN ROUTE ACCESSED ===');
+  try {
+    res.render('informasi-pendaftaran', { title: 'Informasi Pendaftaran - SMAIT Baituljannah' });
+    console.log('=== INFORMASI PENDAFTARAN RENDERED SUCCESSFULLY ===');
+  } catch (error) {
+    console.error('=== ERROR RENDERING INFORMASI PENDAFTARAN ===', error);
+    res.status(500).render('500', { title: 'Server Error' });
+  }
+});
+
 // Contact routes
 app.get('/contact', (req, res) => {
   res.render('contact', { title: 'Kontak - Baituljannah' });
@@ -743,7 +822,7 @@ app.post('/login', [
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup', { title: 'Daftar Akun - SMPIT Baituljannah' });
+  res.render('signup', { title: 'Daftar Akun - SMAIT Baituljannah' });
 });
 
 app.post('/signup', [
@@ -806,7 +885,7 @@ app.post('/signup', [
 
 // Consultation routes
 app.get('/konsultasi', (req, res) => {
-  res.render('konsultasi', { title: 'Konsultasi - SMPIT Baituljannah' });
+  res.render('konsultasi', { title: 'Konsultasi - SMAIT Baituljannah' });
 });
 
 app.post('/konsultasi', [
@@ -820,7 +899,7 @@ app.post('/konsultasi', [
   
   if (!errors.isEmpty()) {
     return res.render('konsultasi', {
-      title: 'Konsultasi - SMPIT Baituljannah',
+      title: 'Konsultasi - SMAIT Baituljannah',
       errors: errors.array().map(err => err.msg),
       formData: req.body
     });
@@ -842,7 +921,7 @@ app.post('/konsultasi', [
   console.log('New consultation request:', consultation);
   
   res.render('konsultasi', {
-    title: 'Konsultasi - SMPIT Baituljannah',
+    title: 'Konsultasi - SMAIT Baituljannah',
     success: true
   });
 });
@@ -859,7 +938,7 @@ app.get('/logout', (req, res) => {
 
 // Portal siswa route
 app.get('/portal-siswa', (req, res) => {
-  res.render('portal-siswa', { title: 'Portal Siswa - SMPIT Baituljannah' });
+  res.render('portal-siswa', { title: 'Portal Siswa - SMAIT Baituljannah' });
 });
 
 // Test route right after portal-siswa
@@ -912,7 +991,7 @@ const beritaHandler = async (req, res) => {
     console.log('Rendering berita template with news array length:', news ? news.length : 0);
     
     res.render('berita', {
-      title: 'Berita Terbaru - SMPIT Baituljannah',
+      title: 'Berita Terbaru - SMAIT Baituljannah',
       news: news || []
     });
     
@@ -934,13 +1013,95 @@ app.get('/berita', beritaHandler);
 // Alternative berita route (for backward compatibility)
 app.get('/berita-page', beritaHandler);
 
+// Berita detail route by slug
+app.get('/berita/slug/:slug', async (req, res) => {
+  try {
+    const newsSlug = req.params.slug;
+    console.log('=== BERITA DETAIL BY SLUG ROUTE ACCESSED ===');
+    console.log('News Slug:', newsSlug);
+    
+    // Get the specific news article by slug
+    const news = await dbHelpers.getNewsBySlug(newsSlug);
+    
+    if (!news) {
+      console.log('News not found for slug:', newsSlug);
+      return res.status(404).render('404', { 
+        title: 'Berita Tidak Ditemukan',
+        message: 'Berita yang Anda cari tidak ditemukan.' 
+      });
+    }
+    
+    console.log('News found:', news.title);
+    
+    // Get related news (other published news, excluding current one)
+    const relatedNews = await dbHelpers.getRelatedNews(news.id, 3);
+    
+    console.log('Related news count:', relatedNews ? relatedNews.length : 0);
+    
+    res.render('berita-detail', {
+      title: news.title + ' - SMAIT Baituljannah',
+      news: news,
+      relatedNews: relatedNews || []
+    });
+    
+  } catch (error) {
+    console.error('Error in berita detail by slug route:', error);
+    res.status(500).render('error', {
+      title: 'Error',
+      message: 'Terjadi kesalahan saat memuat detail berita',
+      error: error
+    });
+  }
+});
+
+// Berita detail route by ID
+app.get('/berita/:id', async (req, res) => {
+  try {
+    const newsId = req.params.id;
+    console.log('=== BERITA DETAIL ROUTE ACCESSED ===');
+    console.log('News ID:', newsId);
+    
+    // Get the specific news article
+    const news = await dbHelpers.getNewsById(newsId);
+    
+    if (!news) {
+      console.log('News not found for ID:', newsId);
+      return res.status(404).render('404', { 
+        title: 'Berita Tidak Ditemukan',
+        message: 'Berita yang Anda cari tidak ditemukan.' 
+      });
+    }
+    
+    console.log('News found:', news.title);
+    
+    // Get related news (other published news, excluding current one)
+    const relatedNews = await dbHelpers.getRelatedNews(newsId, 3);
+    
+    console.log('Related news count:', relatedNews ? relatedNews.length : 0);
+    
+    res.render('berita-detail', {
+      title: news.title + ' - SMAIT Baituljannah',
+      news: news,
+      relatedNews: relatedNews || []
+    });
+    
+  } catch (error) {
+    console.error('Error in berita detail route:', error);
+    res.status(500).render('error', {
+      title: 'Error',
+      message: 'Terjadi kesalahan saat memuat detail berita',
+      error: error
+    });
+  }
+});
+
 
 
 // Student registration routes
 // GET route for registration form
 app.get('/daftar-siswa', (req, res) => {
   res.render('daftar-siswa', {
-    title: 'Pendaftaran Siswa Baru - SMPIT Baituljannah',
+    title: 'Pendaftaran Siswa Baru - SMAIT Baituljannah',
     errors: [],
     formData: {}
   });
@@ -970,7 +1131,7 @@ app.post('/daftar-siswa', [
   
   if (!errors.isEmpty()) {
     return res.render('daftar-siswa', {
-      title: 'Pendaftaran Siswa Baru - SMPIT Baituljannah',
+      title: 'Pendaftaran Siswa Baru - SMAIT Baituljannah',
       errors: errors.array().map(err => err.msg),
       formData: req.body
     });
@@ -1005,7 +1166,7 @@ app.post('/daftar-siswa', [
     
     // Success - render form with success message
     res.render('daftar-siswa', {
-      title: 'Pendaftaran Siswa Baru - SMPIT Baituljannah',
+      title: 'Pendaftaran Siswa Baru - SMAIT Baituljannah',
       success: true,
       errors: [],
       formData: {}
@@ -1013,7 +1174,7 @@ app.post('/daftar-siswa', [
   } catch (error) {
     console.error('Database error:', error);
     res.render('daftar-siswa', {
-      title: 'Pendaftaran Siswa Baru - SMPIT Baituljannah',
+      title: 'Pendaftaran Siswa Baru - SMAIT Baituljannah',
       errors: ['Terjadi kesalahan sistem. Silakan coba lagi.'],
       formData: req.body
     });
@@ -1028,7 +1189,7 @@ app.get('/admin/login', (req, res) => {
     return res.redirect('/admin/dashboard');
   }
   res.render('admin-login', {
-    title: 'Admin Login - SMPIT Baituljannah',
+    title: 'Admin Login - SMAIT Baituljannah',
     errors: [],
     formData: {}
   });
@@ -1044,7 +1205,7 @@ app.post('/admin/login', [
   
   if (!errors.isEmpty()) {
     return res.render('admin-login', {
-      title: 'Admin Login - SMPIT Baituljannah',
+      title: 'Admin Login - SMAIT Baituljannah',
       errors: errors.array().map(err => err.msg),
       formData: req.body
     });
@@ -1057,7 +1218,7 @@ app.post('/admin/login', [
     
     if (!admin) {
       return res.render('admin-login', {
-        title: 'Admin Login - SMPIT Baituljannah',
+        title: 'Admin Login - SMAIT Baituljannah',
         errors: ['Username atau password salah.'],
         formData: req.body
       });
@@ -1086,7 +1247,7 @@ app.post('/admin/login', [
   } catch (err) {
     console.error('Database error:', err);
     return res.render('admin-login', {
-      title: 'Admin Login - SMPIT Baituljannah',
+      title: 'Admin Login - SMAIT Baituljannah',
       errors: ['Terjadi kesalahan sistem. Silakan coba lagi.'],
       formData: req.body
     });
@@ -1115,7 +1276,7 @@ app.get('/admin/dashboard', requireAdminAuth, async (req, res) => {
     }
     
     res.render('admin-dashboard', {
-      title: 'Admin Dashboard - SMPIT Baituljannah',
+      title: 'Admin Dashboard - SMAIT Baituljannah',
       adminName: req.session.adminUsername,
       adminUser: adminUser || { full_name: 'Administrator' },
       stats,
@@ -1135,7 +1296,7 @@ app.get('/admin/registrations', requireAdminAuth, async (req, res) => {
     const registrations = await dbHelpers.getStudentRegistrations({ status, program });
     
     res.render('admin-registrations', {
-      title: 'Kelola Pendaftaran - SMPIT Baituljannah',
+      title: 'Kelola Pendaftaran - SMAIT Baituljannah',
       adminName: req.session.adminUsername,
       registrations,
       currentStatus: status || '',
@@ -1144,7 +1305,7 @@ app.get('/admin/registrations', requireAdminAuth, async (req, res) => {
   } catch (err) {
     console.error('Database error:', err);
     res.render('admin-registrations', {
-      title: 'Kelola Pendaftaran - SMPIT Baituljannah',
+      title: 'Kelola Pendaftaran - SMAIT Baituljannah',
       adminName: req.session.adminUsername,
       registrations: [],
       currentStatus: status || '',
@@ -1285,7 +1446,7 @@ app.get('/admin/registrations/export', requireAdminAuth, async (req, res) => {
       doc.pipe(res);
       
       // Title
-      doc.fontSize(16).text('Data Registrasi Siswa SMP Baitul Jannah', { align: 'center' });
+      doc.fontSize(16).text('Data Registrasi Siswa SMAIT Baitul Jannah', { align: 'center' });
       doc.moveDown();
       
       // Table headers
@@ -1393,7 +1554,7 @@ app.get('/admin/settings', requireAdminAuth, async (req, res) => {
     const adminUser = await dbHelpers.findAdminByUsername(req.session.adminUsername);
     
     res.render('admin-settings', {
-      title: 'Pengaturan Admin - SMPIT Baituljannah',
+      title: 'Pengaturan Admin - SMAIT Baituljannah',
       adminName: req.session.adminUsername,
       adminUser: adminUser || { full_name: 'Administrator' }
     });
@@ -1410,7 +1571,7 @@ app.get('/admin/news', requireAdminAuth, async (req, res) => {
     const adminUser = await dbHelpers.findAdminByUsername(req.session.adminUsername);
     
     res.render('admin-news', {
-      title: 'Manajemen Berita - SMPIT Baituljannah',
+      title: 'Manajemen Berita - SMAIT Baituljannah',
       adminName: req.session.adminUsername,
       adminUser: adminUser || { full_name: 'Administrator' }
     });
@@ -1938,6 +2099,8 @@ app.get('/berita-debug-final', (req, res) => {
 // 404 handler
 app.use((req, res) => {
   console.log('=== 404 HANDLER CALLED ===', req.path);
+  console.log('=== REQUEST METHOD ===', req.method);
+  console.log('=== REQUEST URL ===', req.url);
   res.status(404).render('404', { title: 'Page Not Found' });
 });
 

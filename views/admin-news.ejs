@@ -72,7 +72,7 @@
                 <div class="sidebar d-flex flex-column p-3">
                     <div class="text-center mb-4">
                         <h5 class="text-white mb-0">Admin Panel</h5>
-                        <small class="text-white-50">SMPIT Baituljannah</small>
+                        <small class="text-white-50">SMAIT Baituljannah</small>
                     </div>
                     
                     <div class="mb-3">
@@ -396,7 +396,7 @@
                 html += `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="card news-item h-100">
-                            ${item.featured_image ? `<img src="${item.featured_image}" class="card-img-top" style="height: 150px; object-fit: cover;" alt="${item.title}">` : ''}
+                            ${item.featured_image ? `<img src="${item.featured_image.startsWith('/uploads/news/') ? item.featured_image : '/uploads/news/' + item.featured_image}" class="card-img-top" style="height: 150px; object-fit: cover;" alt="${item.title}">` : ''}
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-2">
                                     <span class="badge bg-${statusClass} status-badge">${statusText}</span>

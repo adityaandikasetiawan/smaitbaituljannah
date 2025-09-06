@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Create database connection
-const dbPath = path.join(__dirname, 'data', 'smp_baituljannah.db');
+const dbPath = path.join(__dirname, 'data', 'smait_baituljannah.db');
 const db = new sqlite3.Database(dbPath);
 
 // Initialize database tables
@@ -46,13 +46,41 @@ db.serialize(() => {
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )`);
 
+  // News table
+  db.run(`CREATE TABLE IF NOT EXISTS news (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    slug TEXT UNIQUE NOT NULL,
+    content TEXT NOT NULL,
+    excerpt TEXT,
+    featured_image TEXT,
+    author_id INTEGER,
+    status TEXT DEFAULT 'draft',
+    published_at DATETIME,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (author_id) REFERENCES admin_users(id)
+  )`);
+
+  // Activity logs table
+  db.run(`CREATE TABLE IF NOT EXISTS activity_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    admin_id INTEGER,
+    action TEXT NOT NULL,
+    description TEXT NOT NULL,
+    ip_address TEXT,
+    user_agent TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (admin_id) REFERENCES admin_users(id)
+  )`);
+
   // Insert default admin user (password: admin123)
   const bcrypt = require('bcryptjs');
   const defaultPassword = bcrypt.hashSync('admin123', 10);
   
   db.run(`INSERT OR IGNORE INTO admin_users (username, email, password, full_name, role) 
     VALUES (?, ?, ?, ?, ?)`, 
-    ['admin', 'admin@smpbaituljannah.sch.id', defaultPassword, 'Administrator', 'admin']
+    ['admin', 'admin@smaitbaituljannah.sch.id', defaultPassword, 'Administrator', 'admin']
   );
 });
 
@@ -458,6 +486,168 @@ const dbHelpers = {
         });
       });
     }
+  },
+
+  // News functions
+  createNews: (newsData) => {
+    const { title, slug, content, excerpt, featured_image, author_id, status = 'draft' } = newsData;
+    return new Promise((resolve, reject) => {
+      const published_at = status === 'published' ? new Date().toISOString() : null;
+      
+      db.run(
+        'INSERT INTO news (title, slug, content, excerpt, featured_image, author_id, status, published_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+        [title, slug, content, excerpt, featured_image, author_id, status, published_at],
+        function(err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({ id: this.lastID, ...newsData });
+          }
+        }
+      );
+    });
+  },
+
+  getAllNews: (filters = {}) => {
+    return new Promise((resolve, reject) => {
+      let query = `
+        SELECT n.*, au.username as author_name, au.full_name as author_full_name 
+        FROM news n 
+        LEFT JOIN admin_users au ON n.author_id = au.id 
+        WHERE 1=1
+      `;
+      const params = [];
+      
+      if (filters.status && filters.status !== 'all') {
+        query += ' AND n.status = ?';
+        params.push(filters.status);
+      }
+      
+      if (filters.author_id) {
+        query += ' AND n.author_id = ?';
+        params.push(filters.author_id);
+      }
+      
+      query += ' ORDER BY n.created_at DESC';
+      
+      if (filters.limit) {
+        query += ' LIMIT ?';
+        params.push(filters.limit);
+      }
+      
+      db.all(query, params, (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
+  },
+
+  getNewsById: (id) => {
+    return new Promise((resolve, reject) => {
+      db.get(
+        'SELECT n.*, au.username as author_name, au.full_name as author_full_name FROM news n LEFT JOIN admin_users au ON n.author_id = au.id WHERE n.id = ?',
+        [id],
+        (err, row) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(row);
+          }
+        }
+      );
+    });
+  },
+
+  getNewsBySlug: (slug) => {
+    return new Promise((resolve, reject) => {
+      db.get(
+        'SELECT n.*, au.username as author_name, au.full_name as author_full_name FROM news n LEFT JOIN admin_users au ON n.author_id = au.id WHERE n.slug = ? AND n.status = "published"',
+        [slug],
+        (err, row) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(row);
+          }
+        }
+      );
+    });
+  },
+
+  updateNews: (id, newsData) => {
+    const { title, slug, content, excerpt, featured_image, status } = newsData;
+    return new Promise((resolve, reject) => {
+      let query = 'UPDATE news SET title = ?, slug = ?, content = ?, excerpt = ?, featured_image = ?, status = ?';
+      let params = [title, slug, content, excerpt, featured_image, status];
+      
+      // Update published_at if status changes to published
+      if (status === 'published') {
+        query += ', published_at = CASE WHEN published_at IS NULL THEN datetime("now") ELSE published_at END';
+      }
+      
+      query += ', updated_at = datetime("now") WHERE id = ?';
+      params.push(id);
+      
+      db.run(query, params, function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  },
+
+  deleteNews: (id) => {
+    return new Promise((resolve, reject) => {
+      db.run('DELETE FROM news WHERE id = ?', [id], function(err) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(true);
+        }
+      });
+    });
+  },
+
+  getNewsStats: () => {
+    return new Promise((resolve, reject) => {
+      db.get(`
+        SELECT 
+          COUNT(*) as total,
+          COUNT(CASE WHEN status = 'published' THEN 1 END) as published,
+          COUNT(CASE WHEN status = 'draft' THEN 1 END) as draft,
+          COUNT(CASE WHEN status = 'archived' THEN 1 END) as archived,
+          COUNT(CASE WHEN DATE(created_at) = DATE('now') THEN 1 END) as today
+        FROM news
+      `, (err, row) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(row);
+        }
+      });
+    });
+  },
+
+  // Activity log functions
+  logActivity: (admin_id, action, description, ip_address, user_agent) => {
+    return new Promise((resolve, reject) => {
+      db.run(
+        'INSERT INTO activity_logs (admin_id, action, description, ip_address, user_agent) VALUES (?, ?, ?, ?, ?)',
+        [admin_id, action, description, ip_address, user_agent],
+        function(err) {
+          if (err) {
+            reject(err);
+          } else {
+            resolve({ id: this.lastID });
+          }
+        }
+      );
+    });
   }
 };
 

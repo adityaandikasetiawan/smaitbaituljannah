@@ -45,24 +45,18 @@
     <section class="banner-slider-section" style="min-height: 70vh; position: relative; overflow: hidden; margin-top: 20px;">
       <div class="banner-slider-container" id="bannerSlider">
         <!-- Slide 1 -->
-        <div class="banner-slide active" style="background: url('/img/slider/DSC09013.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
+        <div class="banner-slide active" style="background: url('/img/slider/SAVE_20250905_204006.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
         </div>
 
         <!-- Slide 2 -->
-        <div class="banner-slide" style="background: url('/img/slider/DSC09327.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
+        <div class="banner-slide" style="background: url('/img/slider/SAVE_20250905_204022.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
         </div>
 
         <!-- Slide 3 -->
-        <div class="banner-slide" style="background: url('/img/slider/PKLN2292 (2).webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
+        <div class="banner-slide" style="background: url('/img/slider/SAVE_20250905_204031.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
         </div>
 
-        <!-- Slide 4 -->
-        <div class="banner-slide" style="background: url('/img/slider/WhatsApp Image 2024-10-11 at 08.47.53 (1).webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
-        </div>
 
-        <!-- Slide 5 -->
-        <div class="banner-slide" style="background: url('/img/slider/ini.webp'); background-size: cover; background-position: center; min-height: 70vh; display: flex; align-items: center;">
-        </div>
       </div>
 
       <!-- Navigation Buttons -->
@@ -80,8 +74,6 @@
         <span class="indicator active" data-slide="1"></span>
         <span class="indicator" data-slide="2"></span>
         <span class="indicator" data-slide="3"></span>
-        <span class="indicator" data-slide="4"></span>
-        <span class="indicator" data-slide="5"></span>
       </div>
     </section>
 
@@ -268,68 +260,48 @@
           <div class="col-auto">
             <div class="sectionTitle">
               <h2 class="sectionTitle__title">Berita Terbaru</h2>
-              <p class="sectionTitle__text">Informasi dan kegiatan terkini dari SMPIT Baituljannah</p>
+              <p class="sectionTitle__text">Informasi terkini seputar kegiatan SMAIT Baituljannah</p>
             </div>
           </div>
         </div>
 
         <div class="row y-gap-30 pt-60 lg:pt-50">
-          <% 
-            // Data berita terbaru dengan gambar asli
-            const beritaTerbaru = [
-              {
-                judul: "Dauroh Qur'an Intensif",
-                tanggal: "15 Januari 2025",
-                ringkasan: "SMPIT Baituljannah mengadakan program Dauroh Qur'an intensif untuk meningkatkan kemampuan membaca dan menghafal Al-Qur'an siswa.",
-                gambar: "/img/berita/dauroh qur'an.webp",
-                kategori: "Kegiatan"
-              },
-              {
-                judul: "Wisuda Angkatan 2025",
-                tanggal: "20 Juni 2025",
-                ringkasan: "Upacara wisuda siswa kelas IX angkatan 2025 dilaksanakan dengan khidmat. Selamat kepada seluruh lulusan yang telah menyelesaikan pendidikan di SMPIT Baituljannah.",
-                gambar: "/img/berita/granduation class 2025.webp",
-                kategori: "Acara"
-              },
-              {
-                judul: "Peringatan Hari Guru Nasional",
-                tanggal: "25 November 2024",
-                ringkasan: "SMPIT Baituljannah memperingati Hari Guru Nasional dengan berbagai kegiatan apresiasi kepada para guru yang telah berdedikasi dalam mendidik siswa.",
-                gambar: "/img/berita/hari guru.webp",
-                kategori: "Peringatan"
-              }
-            ];
-            beritaTerbaru.forEach((berita, index) => { 
-          %>
-          <div class="col-lg-4 col-md-6">
-            <div class="blogCard -type-1">
-              <div class="blogCard__image">
-                <img src="<%= berita.gambar %>" alt="<%= berita.judul %>" class="w-100" style="height: 200px; object-fit: cover; border-radius: 8px;">
-              </div>
-
-              <div class="blogCard__content mt-20">
-                <div class="blogCard__category text-13 fw-500 text-<%= ['blue', 'green', 'red'][index % 3] %>-1">
-                  <%= berita.kategori %>
+          <% if (latestNews && latestNews.length > 0) { %>
+            <% latestNews.forEach((berita, index) => { %>
+            <div class="col-lg-4 col-md-6">
+              <div class="blogCard -type-1">
+                <div class="blogCard__image">
+                  <img src="<%= berita.featured_image ? (berita.featured_image.startsWith('/uploads/news/') ? berita.featured_image : '/uploads/news/' + berita.featured_image) : '/img/default-news.svg' %>" alt="<%= berita.title %>" class="w-100" style="height: 200px; object-fit: cover; border-radius: 8px;">
                 </div>
-                <h4 class="blogCard__title text-17 lh-15 fw-500 mt-5">
-                  <a href="/berita#<%= berita.judul.toLowerCase().replace(/\s+/g, '-') %>"><%= berita.judul %></a>
-                </h4>
-                <p class="blogCard__text text-14 lh-18 text-light-1 mt-10">
-                  <%= berita.ringkasan %>
-                </p>
-                <div class="blogCard__date text-13 text-light-1 mt-15">
-                  <i class="icon icon-calendar mr-8"></i>
-                  <%= berita.tanggal %>
+
+                <div class="blogCard__content mt-20">
+                  <div class="blogCard__category text-13 fw-500 text-<%= ['blue', 'green', 'red'][index % 3] %>-1">
+                    Berita
+                  </div>
+                  <h4 class="blogCard__title text-17 lh-15 fw-500 mt-5">
+                    <a href="/berita/<%= berita.id %>"><%= berita.title %></a>
+                  </h4>
+                  <p class="blogCard__text text-14 lh-18 text-light-1 mt-10">
+                    <%= berita.excerpt || berita.content.substring(0, 150) + '...' %>
+                  </p>
+                  <div class="blogCard__date text-13 text-light-1 mt-15">
+                    <i class="icon icon-calendar mr-8"></i>
+                    <%= new Date(berita.published_at || berita.created_at).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <% }) %>
+            <% }) %>
+          <% } else { %>
+            <div class="col-12 text-center">
+              <p class="text-light-1">Belum ada berita terbaru.</p>
+            </div>
+          <% } %>
         </div>
 
         <div class="row justify-center pt-60 lg:pt-40">
           <div class="col-auto">
-            <a href="/berita" class="button -blue-1 text-white">Lihat Semua Berita</a>
+            <a href="/berita" class="button -primary text-white">Lihat Semua Berita</a>
           </div>
         </div>
       </div>
@@ -340,8 +312,8 @@
       <div class="container">
         <div class="row justify-center text-center mb-60">
           <div class="col-xl-8 col-lg-10">
-            <h2 class="text-30 lh-16 fw-700">Program Unggulan SMPIT Baituljannah</h2>
-            <p class="text-15 lh-18 text-light-1 mt-10">Program-program khusus yang menjadi keunggulan dan ciri khas SMPIT Baituljannah dalam membentuk generasi Islami yang unggul</p>
+            <h2 class="text-30 lh-16 fw-700">Program Unggulan SMAIT Baituljannah</h2>
+            <p class="text-15 lh-18 text-light-1 mt-10">Program-program khusus yang menjadi keunggulan dan ciri khas SMAIT Baituljannah dalam membentuk generasi Islami yang unggul</p>
           </div>
         </div>
         
@@ -501,6 +473,64 @@
       </div>
     </section> -->
 
+    <!-- Section Nilai-Nilai Islam -->
+    <section class="layout-pt-lg layout-pb-lg bg-primary" style="background: linear-gradient(135deg, #2D5016 0%, #4A7C23 100%);">
+      <div class="container">
+        <div class="row justify-center text-center">
+          <div class="col-lg-8">
+            <div class="text-center">
+              <h2 class="text-30 lh-16 fw-700 text-white mb-30">Nilai-Nilai Islam dalam Pendidikan</h2>
+              <p class="text-16 lh-18 text-white mb-40 opacity-90">
+                SMAIT Baituljannah mengintegrasikan nilai-nilai Islam dalam setiap aspek pendidikan untuk membentuk generasi yang beriman, bertakwa, dan berakhlak mulia.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row y-gap-30 pt-40">
+          <div class="col-lg-3 col-md-6">
+            <div class="text-center">
+              <div class="bg-white rounded-full d-inline-flex items-center justify-center" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                <i class="fas fa-quran text-primary text-30"></i>
+              </div>
+              <h5 class="text-white fw-600 mb-15">Al-Quran & Hadits</h5>
+              <p class="text-white opacity-80 text-14">Pembelajaran berbasis Al-Quran dan Hadits sebagai pedoman hidup</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="text-center">
+              <div class="bg-white rounded-full d-inline-flex items-center justify-center" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                <i class="fas fa-pray text-primary text-30"></i>
+              </div>
+              <h5 class="text-white fw-600 mb-15">Akhlak Mulia</h5>
+              <p class="text-white opacity-80 text-14">Pembentukan karakter islami yang kuat dan berakhlak mulia</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="text-center">
+              <div class="bg-white rounded-full d-inline-flex items-center justify-center" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                <i class="fas fa-graduation-cap text-primary text-30"></i>
+              </div>
+              <h5 class="text-white fw-600 mb-15">Ilmu Pengetahuan</h5>
+              <p class="text-white opacity-80 text-14">Menggali ilmu pengetahuan sebagai ibadah kepada Allah SWT</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6">
+            <div class="text-center">
+              <div class="bg-white rounded-full d-inline-flex items-center justify-center" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                <i class="fas fa-hands-helping text-primary text-30"></i>
+              </div>
+              <h5 class="text-white fw-600 mb-15">Ukhuwah Islamiyah</h5>
+              <p class="text-white opacity-80 text-14">Membangun persaudaraan dan kebersamaan dalam Islam</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Penerimaan Peserta Didik Baru Section -->
     <section class="layout-pt-lg layout-pb-lg bg-light-3">
       <style>
@@ -515,12 +545,15 @@
             <div class="text-center">
               <h2 class="text-30 lh-16 fw-700 text-dark-1 mb-30">Penerimaan Peserta Didik Baru</h2>
               <p class="text-16 lh-18 text-light-1 mb-40">
-                Bergabunglah dengan SMPIT Baituljannah, sekolah Islam terpadu yang mengintegrasikan pendidikan akademik modern dengan pembinaan spiritual Islam. Lingkungan kondusif dengan fasilitas terdepan untuk membentuk generasi Qur'ani yang cerdas, mandiri, dan berakhlakul karimah.
+                Bergabunglah dengan SMAIT Baituljannah, sekolah Islam terpadu yang mengintegrasikan pendidikan akademik modern dengan pembinaan spiritual Islam. Lingkungan kondusif dengan fasilitas terdepan untuk membentuk generasi Qur'ani yang cerdas, mandiri, dan berakhlakul karimah.
               </p>
               
               <div class="d-flex flex-wrap justify-center y-gap-20">
-                <!-- Tombol Daftar Sekarang telah dinonaktifkan -->
-                <a href="/program-unggulan" class="btn btn-boarding-secondary">
+                <a href="/daftar-siswa" class="button h-60 px-40 -green-1 text-white rounded-8 mr-20">
+                  <i class="fas fa-user-plus mr-10"></i>
+                  Daftar Sekarang
+                </a>
+                <a href="/program-unggulan" class="button h-60 px-40 -outline-green-1 text-green-1 rounded-8">
                   <i class="fas fa-info-circle mr-10"></i>
                   Info Lengkap
                 </a>
@@ -650,7 +683,7 @@
           <div class="col-auto">
             <div class="sectionTitle">
               <h2 class="sectionTitle__title">Testimoni Alumni</h2>
-              <p class="sectionTitle__text">Pengalaman nyata dari keluarga besar SMPIT Baituljannah</p>
+              <p class="sectionTitle__text">Pengalaman nyata dari keluarga besar SMAIT Baituljannah</p>
             </div>
           </div>
         </div>
@@ -659,8 +692,8 @@
           <% 
                 // Menggunakan data testimoni placeholder karena belum ada di JSON
                 const testimoniPlaceholder = [
-                  {judul: "Fondasi Kuat untuk Masa Depan", isi: "SMPIT Baituljannah memberikan bekal ilmu agama dan umum yang seimbang. Sekarang saya berhasil melanjutkan ke SMA favorit dengan nilai terbaik.", nama: "Ahmad Fauzi", peran: "Alumni 2023"},
-                  {judul: "Karakter Islami Terbentuk", isi: "Program tahfidz dan pembinaan akhlak di SMPIT Baituljannah membentuk kepribadian saya. Alhamdulillah sekarang saya aktif di organisasi dakwah kampus.", nama: "Fatimah Zahra", peran: "Alumni 2022"},
+                  {judul: "Fondasi Kuat untuk Masa Depan", isi: "SMAIT Baituljannah memberikan bekal ilmu agama dan umum yang seimbang. Sekarang saya berhasil melanjutkan ke universitas favorit dengan nilai terbaik.", nama: "Ahmad Fauzi", peran: "Alumni 2023"},
+                  {judul: "Karakter Islami Terbentuk", isi: "Program tahfidz dan pembinaan akhlak di SMAIT Baituljannah membentuk kepribadian saya. Alhamdulillah sekarang saya aktif di organisasi dakwah kampus.", nama: "Fatimah Zahra", peran: "Alumni 2022"},
                   {judul: "Prestasi yang Membanggakan", isi: "Berkat bimbingan guru-guru terbaik, saya berhasil meraih juara olimpiade sains tingkat nasional dan melanjutkan ke sekolah impian.", nama: "Muhammad Rizki", peran: "Alumni 2024"}
                 ];
                 testimoniPlaceholder.forEach((testimoni, index) => { 
@@ -698,7 +731,7 @@
         <div class="row justify-center">
           <div class="col text-center">
             <h2 class="text-40 lg:text-30 text-dark-1 fw-700">Galeri Prestasi</h2>
-            <p class="text-17 text-dark-1 mt-10">Dokumentasi pencapaian siswa-siswi SMPIT Baituljannah</p>
+            <p class="text-17 text-dark-1 mt-10">Dokumentasi pencapaian siswa-siswi SMAIT Baituljannah</p>
           </div>
         </div>
 

@@ -1,8 +1,8 @@
 {
   "beranda": {
-    "welcome_message": "Selamat Datang di SMPIT Baituljannah",
+    "welcome_message": "Selamat Datang di SMAIT Baituljannah",
     "tagline": "Unggul dalam Prestasi, Berkarakter, dan Berwawasan Global",
-    "description": "SMPIT Baituljannah adalah sekolah menengah pertama Islam terpadu yang berkomitmen memberikan pendidikan berkualitas dengan mengembangkan potensi akademik dan karakter siswa melalui pembelajaran inovatif yang mengintegrasikan nilai-nilai Islam.",
+    "description": "SMAIT Baituljannah adalah sekolah menengah atas Islam terpadu yang berkomitmen memberikan pendidikan berkualitas dengan mengembangkan potensi akademik dan karakter siswa melalui pembelajaran inovatif yang mengintegrasikan nilai-nilai Islam.",
     "statistics": {
       "siswa_aktif": "800+",
       "guru_berpengalaman": "45",
@@ -11,43 +11,41 @@
     }
   },
   "sejarah": {
-    "title": "Sejarah SMPIT Baituljannah",
+    "title": "Sejarah SMAIT Baituljannah",
     "content": [
       {
-        "year": "1985",
-        "event": "Pendirian SMPIT Baituljannah berdasarkan SK Yayasan Pendidikan Islam dengan visi menjadi sekolah unggulan Islam terpadu."
+        "year": "2017",
+        "event": "Pendirian SMA IT Baitul Jannah berdasarkan SK Yayasan Pendidikan Islam dengan visi menjadi sekolah unggulan Islam terpadu yang mengintegrasikan teknologi informasi dalam pembelajaran."
       },
       {
-        "year": "1990",
-        "event": "Meraih akreditasi A pertama kali dan mulai mengembangkan program unggulan dalam bidang teknologi informasi dan komunikasi."
+        "year": "2018",
+        "event": "Pembangunan fasilitas sekolah dan rekrutmen tenaga pendidik berkualitas untuk memulai kegiatan belajar mengajar dengan standar pendidikan Islam terpadu."
       },
       {
-        "year": "2000",
-        "event": "Pembangunan laboratorium teknologi informasi dan perpustakaan digital sebagai bagian dari modernisasi fasilitas pendidikan berbasis IT."
+        "year": "2019",
+        "event": "Meluluskan angkatan pertama dan mulai mengembangkan program unggulan dalam bidang teknologi informasi, tahfidz Al-Quran, dan sains."
       },
       {
-        "year": "2010",
-        "event": "Implementasi kurikulum berbasis karakter dan teknologi informasi serta menjalin kerjasama dengan institusi teknologi."
+        "year": "2021",
+        "event": "Meraih akreditasi A dari Badan Akreditasi Nasional Sekolah/Madrasah (BAN-S/M) sebagai pengakuan atas kualitas pendidikan yang telah dicapai."
       },
       {
-        "year": "2020",
-        "event": "Menjadi pelopor pembelajaran digital dan hybrid learning dengan platform e-learning terintegrasi."
+        "year": "2022",
+        "event": "Implementasi pembelajaran digital dan hybrid learning dengan platform e-learning terintegrasi untuk mendukung proses pembelajaran yang lebih efektif."
       },
       {
         "year": "2024",
-        "event": "Implementasi Kurikulum Merdeka dengan fokus teknologi informasi dan pengembangan program coding untuk siswa."
+        "event": "Telah berhasil meluluskan 6 angkatan siswa dengan prestasi gemilang dan implementasi Kurikulum Merdeka dengan fokus teknologi informasi serta pengembangan program coding untuk siswa."
       }
     ]
   },
   "visi_misi": {
-    "visi": "Menjadi sekolah menengah pertama yang unggul dalam prestasi akademik dan teknologi informasi, berkarakter Islami, serta berwawasan global dan inovatif.",
+    "visi": "Mewujudkan generasi yang berakhlakul karimah, berprestasi, mandiri dan berwawasan global",
     "misi": [
-      "Menyelenggarakan pendidikan yang berkualitas dengan mengintegrasikan nilai-nilai Islam dan teknologi informasi dalam setiap pembelajaran",
-      "Mengembangkan potensi siswa melalui program akademik berbasis IT dan ekstrakurikuler yang beragam dan inovatif",
-      "Membangun budaya literasi digital, numerasi, dan penguasaan teknologi informasi dalam proses pembelajaran",
-      "Menciptakan lingkungan sekolah yang kondusif, aman, dan berbasis teknologi smart school",
-      "Menjalin kerjasama dengan orang tua, masyarakat, dan industri teknologi untuk mendukung pendidikan holistik",
-      "Mempersiapkan siswa yang siap menghadapi era digital dengan tetap menjunjung nilai-nilai Islam dan kearifan lokal"
+      "Menumbuhkan adab dan akhlak berdasarkan kaidah-kaidah Islam",
+      "Menerapkan pendidikan berkualitas, berprinsip, kolaborasi, untuk membentuk karakter, pembelajar sepanjang hayat.",
+      "Menumbuhkan potensi siswa melalui pendidikan yang mengedepankan pengembangan minat, bakat dan kemajuan teknologi",
+      "Mengembangkan teknologi dalam sistem pembelajaran untuk menyiapkan siswa agar siap bersaing dan memiliki wawasan global."
     ],
     "tujuan": [
       "Menghasilkan lulusan yang memiliki kompetensi akademik tinggi, karakter Islami, dan menguasai teknologi informasi",
@@ -134,7 +132,7 @@
   ],
   "kurikulum": {
     "jenis": "Kurikulum Merdeka",
-    "deskripsi": "SMPIT Baituljannah menerapkan Kurikulum Merdeka yang terintegrasi dengan teknologi informasi, memberikan fleksibilitas kepada siswa untuk mengembangkan potensi di bidang IT sesuai dengan fase perkembangannya.",
+    "deskripsi": "SMAIT Baituljannah menerapkan Kurikulum Merdeka yang terintegrasi dengan teknologi informasi, memberikan fleksibilitas kepada siswa untuk mengembangkan potensi di bidang IT sesuai dengan fase perkembangannya.",
     "mata_pelajaran": {
       "wajib": [
         "Pendidikan Agama dan Budi Pekerti",
@@ -218,7 +216,7 @@
     "akademik": [
       {
         "tahun": "2024",
-        "prestasi": "Juara 1 Kompetisi Programming Nasional tingkat SMP se-Indonesia",
+        "prestasi": "Juara 1 Kompetisi Programming Nasional tingkat SMA se-Indonesia",
         "siswa": "Ahmad Rizki Pratama - Kelas 9A"
       },
       {
@@ -229,7 +227,7 @@
       {
         "tahun": "2023",
         "prestasi": "Juara 3 Lomba Mobile App Development tingkat Nasional",
-        "siswa": "Tim Developer SMPIT Baituljannah"
+        "siswa": "Tim Developer SMAIT Baituljannah"
       },
       {
         "tahun": "2023",
@@ -241,7 +239,7 @@
       {
         "tahun": "2024",
         "prestasi": "Juara 1 Lomba IoT (Internet of Things) tingkat Nasional",
-        "siswa": "Tim IT SMPIT Baituljannah"
+        "siswa": "Tim IT SMAIT Baituljannah"
       },
       {
         "tahun": "2024",
@@ -251,12 +249,12 @@
       {
         "tahun": "2023",
         "prestasi": "Juara 1 Lomba E-Sports tingkat Nasional",
-        "siswa": "Tim E-Sports SMPIT Baituljannah"
+        "siswa": "Tim E-Sports SMAIT Baituljannah"
       },
       {
         "tahun": "2023",
         "prestasi": "Juara 3 Lomba Video Editing tingkat Nasional",
-        "siswa": "Tim Multimedia SMPIT Baituljannah"
+        "siswa": "Tim Multimedia SMAIT Baituljannah"
       }
     ],
     "sekolah": [
@@ -276,15 +274,15 @@
   },
   "faq": [
     {
-      "question": "Bagaimana cara mendaftar di SMPIT Baituljannah?",
-      "answer": "Pendaftaran dilakukan melalui sistem online di website resmi SMPIT Baituljannah atau datang langsung ke sekolah. Periode pendaftaran biasanya dimulai bulan Januari hingga Mei setiap tahunnya dengan tes seleksi akademik dan wawancara."
+      "question": "Bagaimana cara mendaftar di SMAIT Baituljannah?",
+      "answer": "Pendaftaran dilakukan melalui sistem online di website resmi SMAIT Baituljannah atau datang langsung ke sekolah. Periode pendaftaran biasanya dimulai bulan Januari hingga Mei setiap tahunnya dengan tes seleksi akademik dan wawancara."
     },
     {
       "question": "Apa saja syarat pendaftaran siswa baru?",
       "answer": "Syarat pendaftaran meliputi: (1) Ijazah SD/sederajat, (2) Akta kelahiran, (3) Kartu Keluarga, (4) Pas foto terbaru, (5) Surat keterangan sehat dari dokter, (6) Surat keterangan kelakuan baik dari sekolah asal."
     },
     {
-      "question": "Berapa biaya sekolah di SMPIT Baituljannah?",
+      "question": "Berapa biaya sekolah di SMAIT Baituljannah?",
       "answer": "Sebagai sekolah swasta, biaya pendidikan meliputi uang pangkal, SPP bulanan, dan biaya pengembangan fasilitas IT. Tersedia program cicilan dan beasiswa prestasi untuk meringankan biaya pendidikan."
     },
     {
@@ -292,7 +290,7 @@
       "answer": "Tersedia 20+ ekstrakurikuler meliputi: Programming Club, Robotika, Web Development, E-Sports, English Club, Pramuka, PMR, Rohis, Basket, Futsal, Renang, Tari, Musik, Teater, Jurnalistik Digital, dan Fotografi."
     },
     {
-      "question": "Bagaimana sistem pembelajaran di SMPIT Baituljannah?",
+      "question": "Bagaimana sistem pembelajaran di SMAIT Baituljannah?",
       "answer": "Kami menerapkan Kurikulum Merdeka terintegrasi IT dengan pembelajaran hybrid (tatap muka dan online). Jam belajar dari 07.00-15.30 WIB dengan sistem smart class dan pembelajaran berbasis projek teknologi."
     },
     {

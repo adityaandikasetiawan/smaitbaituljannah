@@ -1,17 +1,22 @@
 {
-  "name": "educrat-ejs",
+  "name": "smait-baituljannah",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "prod": "NODE_ENV=production node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "sekolah",
+    "pendidikan",
+    "smait",
+    "baituljannah"
+  ],
+  "author": "SMAIT Baituljannah",
   "license": "ISC",
-  "description": "",
+  "description": "Sistem Informasi Sekolah SMAIT Baituljannah",
   "dependencies": {
     "axios": "^1.11.0",
     "axios-cookiejar-support": "^6.0.4",
@@ -33,6 +38,7 @@
     "mysql2": "^3.14.4",
     "pdfkit": "^0.17.2",
     "sharp": "^0.34.3",
+    "sqlite3": "^5.1.7",
     "tough-cookie": "^5.1.2",
     "xlsx": "^0.18.5"
   }

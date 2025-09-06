@@ -1,6 +1,6 @@
-# Panduan Deployment SMPIT Baituljannah
+# Panduan Deployment SMAIT Baituljannah
 
-Panduan ini menjelaskan cara mengkonfigurasi dan menjalankan aplikasi SMPIT Baituljannah agar dapat diakses melalui domain `smpitbaituljannah.sch.id`.
+Panduan ini menjelaskan cara mengkonfigurasi dan menjalankan aplikasi SMAIT Baituljannah agar dapat diakses melalui domain `smaitbaituljannah.sch.id`.
 
 ## Prasyarat
 
@@ -37,7 +37,7 @@ File `.env` sudah dikonfigurasi dengan pengaturan production.
 
 #### b. Install Dependencies
 ```bash
-cd /var/www/html/smpbaituljannah
+cd /var/www/html/smaitbaituljannah
 npm install --production
 ```
 
@@ -45,12 +45,12 @@ npm install --production
 
 #### a. Copy konfigurasi virtual host
 ```bash
-sudo cp nginx-smpitbaituljannah.conf /etc/nginx/sites-available/smpitbaituljannah.sch.id
+sudo cp nginx-smaitbaituljannah.conf /etc/nginx/sites-available/smaitbaituljannah.sch.id
 ```
 
 #### b. Aktifkan site
 ```bash
-sudo ln -s /etc/nginx/sites-available/smpitbaituljannah.sch.id /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/smaitbaituljannah.sch.id /etc/nginx/sites-enabled/
 ```
 
 #### c. Test dan restart Nginx
@@ -67,7 +67,7 @@ sudo systemctl restart nginx
 sudo apt install certbot python3-certbot-nginx -y
 
 # Generate SSL certificate
-sudo certbot --nginx -d smpitbaituljannah.sch.id -d www.smpitbaituljannah.sch.id
+sudo certbot --nginx -d smaitbaituljannah.sch.id -d www.smaitbaituljannah.sch.id
 ```
 
 ### 5. Menjalankan Aplikasi
@@ -87,11 +87,11 @@ Pastikan DNS record untuk domain sudah dikonfigurasi:
 
 ```
 Type: A
-Name: smpitbaituljannah.sch.id
+Name: smaitbaituljannah.sch.id
 Value: [IP_ADDRESS_SERVER]
 
 Type: A
-Name: www.smpitbaituljannah.sch.id
+Name: www.smaitbaituljannah.sch.id
 Value: [IP_ADDRESS_SERVER]
 ```
 
@@ -103,22 +103,22 @@ Value: [IP_ADDRESS_SERVER]
 pm2 status
 
 # Lihat logs
-pm2 logs smpbaituljannah
+pm2 logs smaitbaituljannah
 
 # Restart aplikasi
-pm2 restart smpbaituljannah
+pm2 restart smaitbaituljannah
 ```
 
 ### Log Files:
-- Application logs: `/var/www/html/smpbaituljannah/logs/`
-- Nginx access log: `/var/log/nginx/smpitbaituljannah.access.log`
-- Nginx error log: `/var/log/nginx/smpitbaituljannah.error.log`
+- Application logs: `/var/www/html/smaitbaituljannah/logs/`
+- Nginx access log: `/var/log/nginx/smaitbaituljannah.access.log`
+- Nginx error log: `/var/log/nginx/smaitbaituljannah.error.log`
 
 ## Troubleshooting
 
 ### 1. Aplikasi tidak dapat diakses
 - Cek status PM2: `pm2 status`
-- Cek logs aplikasi: `pm2 logs smpbaituljannah`
+- Cek logs aplikasi: `pm2 logs smaitbaituljannah`
 - Cek status Nginx: `sudo systemctl status nginx`
 
 ### 2. SSL Certificate Error
@@ -126,7 +126,7 @@ pm2 restart smpbaituljannah
 - Renew certificate: `sudo certbot renew`
 
 ### 3. Permission Issues
-- Pastikan ownership file benar: `sudo chown -R www-data:www-data /var/www/html/smpbaituljannah`
+- Pastikan ownership file benar: `sudo chown -R www-data:www-data /var/www/html/smaitbaituljannah`
 
 ## Security Features
 

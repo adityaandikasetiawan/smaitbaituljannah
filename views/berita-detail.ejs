@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= news.title %> - SMAIT Baituljannah</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/img/general/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/general/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/general/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/general/apple-touch-icon.png">
+  
+  <!-- Meta tags for social sharing -->
+  <meta property="og:title" content="<%= news.title %>">
+  <meta property="og:description" content="<%= news.excerpt || news.content.substring(0, 160) %>">
+  <meta property="og:image" content="<%= news.featured_image ? (news.featured_image.startsWith('/uploads/news/') ? 'http://localhost:3000' + news.featured_image : 'http://localhost:3000/uploads/news/' + news.featured_image) : '/img/general/logo.png' %>">
+  <meta property="og:url" content="http://localhost:3000/berita/<%= news.id %>">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader js-preloader">
+    <div class="preloader__wrap">
+      <div class="preloader__icon">
+        <i class="icon icon-loading"></i>
+      </div>
+    </div>
+  </div>
+  
+  <%- include('partials/header') %>
+  
+  <main class="main-content layout-pt-lg layout-pb-lg">
+    <!-- Breadcrumb -->
+    <section class="breadcrumb py-20 bg-light-6">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="/" class="text-dark-1">Beranda</a></li>
+                <li class="breadcrumb-item"><a href="/berita" class="text-dark-1">Berita</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><%= news.title.length > 50 ? news.title.substring(0, 50) + '...' : news.title %></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="layout-pt-md layout-pb-md">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="col-xl-8 col-lg-10">
+            <!-- Article Header -->
+            <div class="article-header mb-40">
+              <h1 class="text-40 lh-14 fw-700 text-dark-1 mb-20"><%= news.title %></h1>
+              
+              <div class="article-meta d-flex align-items-center flex-wrap mb-30">
+                <div class="d-flex align-items-center mr-30 mb-10">
+                  <i class="fas fa-calendar-alt text-light-1 mr-10"></i>
+                  <span class="text-15 text-light-1">
+                    <%= new Date(news.created_at).toLocaleDateString('id-ID', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    }) %>
+                  </span>
+                </div>
+                
+                <div class="d-flex align-items-center mr-30 mb-10">
+                  <i class="fas fa-user text-light-1 mr-10"></i>
+                  <span class="text-15 text-light-1">Admin SMAIT Baituljannah</span>
+                </div>
+                
+                <div class="d-flex align-items-center mb-10">
+                  <i class="fas fa-tag text-light-1 mr-10"></i>
+                  <span class="text-15 text-light-1">Berita Sekolah</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Featured Image -->
+            <% if (news.featured_image) { %>
+              <div class="article-image mb-40">
+                <img src="<%= news.featured_image.startsWith('/uploads/news/') ? news.featured_image : '/uploads/news/' + news.featured_image %>" alt="<%= news.title %>" class="w-100 rounded-8" style="max-height: 400px; object-fit: cover;">
+              </div>
+            <% } %>
+
+            <!-- Article Content -->
+            <div class="article-content">
+              <div class="text-17 lh-18 text-dark-1">
+                <%- news.content %>
+              </div>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="article-share mt-50 pt-30 border-top-light">
+              <h5 class="text-18 fw-500 mb-20">Bagikan Artikel Ini:</h5>
+              <div class="d-flex align-items-center flex-wrap">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/berita/<%= news.id %>" target="_blank" class="btn btn-outline-primary btn-sm mr-15 mb-10">
+                  <i class="fab fa-facebook-f mr-5"></i> Facebook
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=http://localhost:3000/berita/<%= news.id %>&text=<%= encodeURIComponent(news.title) %>" target="_blank" class="btn btn-outline-info btn-sm mr-15 mb-10">
+                  <i class="fab fa-twitter mr-5"></i> Twitter
+                </a>
+                <a href="https://wa.me/?text=<%= encodeURIComponent(news.title + ' - http://localhost:3000/berita/' + news.id) %>" target="_blank" class="btn btn-outline-success btn-sm mr-15 mb-10">
+                  <i class="fab fa-whatsapp mr-5"></i> WhatsApp
+                </a>
+                <button onclick="copyToClipboard('http://localhost:3000/berita/<%= news.id %>')" class="btn btn-outline-secondary btn-sm mb-10">
+                  <i class="fas fa-link mr-5"></i> Salin Link
+                </button>
+              </div>
+            </div>
+
+            <!-- Navigation to other articles -->
+            <div class="article-navigation mt-50 pt-30 border-top-light">
+              <div class="row">
+                <div class="col-md-6 mb-20">
+                  <a href="/berita" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left mr-10"></i> Kembali ke Berita
+                  </a>
+                </div>
+                <div class="col-md-6 mb-20 text-md-right">
+                  <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home mr-10"></i> Beranda
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related News Section -->
+    <% if (relatedNews && relatedNews.length > 0) { %>
+    <section class="layout-pt-md layout-pb-md bg-light-6">
+      <div class="container">
+        <div class="row justify-center text-center mb-60">
+          <div class="col-xl-6 col-lg-8">
+            <h2 class="text-30 lh-16 fw-700">Berita Terkait</h2>
+            <p class="text-15 lh-18 text-light-1 mt-10">Berita lainnya yang mungkin menarik untuk Anda</p>
+          </div>
+        </div>
+        
+        <div class="row y-gap-30">
+          <% relatedNews.forEach(function(article) { %>
+            <div class="col-lg-4 col-md-6">
+              <div class="eventCard -type-1 bg-white rounded-8 shadow-4 overflow-hidden">
+                <div class="eventCard__img">
+                  <% if (article.featured_image) { %>
+                    <img src="<%= article.featured_image.startsWith('/uploads/news/') ? article.featured_image : '/uploads/news/' + article.featured_image %>" alt="<%= article.title %>" class="w-100" style="height: 200px; object-fit: cover;">
+                  <% } else { %>
+                    <div class="bg-light-6 d-flex align-items-center justify-center" style="height: 200px;">
+                      <i class="fas fa-newspaper text-light-1 text-40"></i>
+                    </div>
+                  <% } %>
+                </div>
+                <div class="eventCard__content px-30 py-30">
+                  <h4 class="eventCard__title text-17 fw-500">
+                    <a href="/berita/<%= article.id %>" class="text-dark-1"><%= article.title %></a>
+                  </h4>
+                  <div class="eventCard__date text-14 lh-1 text-light-1 mt-5">
+                    <%= new Date(article.created_at).toLocaleDateString('id-ID', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    }) %>
+                  </div>
+                  <p class="eventCard__text text-14 lh-18 text-light-1 mt-10">
+                    <%= article.excerpt || article.content.substring(0, 150) + '...' %>
+                  </p>
+                  <a href="/berita/<%= article.id %>" class="btn btn-outline-primary btn-sm mt-15">
+                    Baca Selengkapnya
+                  </a>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+    <% } %>
+  </main>
+  
+  <%- include('partials/footer') %>
+  
+  <!-- Scripts -->
+  <script src="/js/vendors.js"></script>
+  <script src="/js/main.js"></script>
+  
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert('Link berhasil disalin!');
+      }, function(err) {
+        console.error('Gagal menyalin link: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

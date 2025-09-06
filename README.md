@@ -1,19 +1,21 @@
-# Educrat - Online Learning Platform
+# SMAIT Baituljannah - Sistem Informasi Sekolah
 
-A modern online learning platform built with Node.js, Express, and EJS templating engine.
+Sistem informasi sekolah untuk SMAIT Baituljannah yang dibangun dengan Node.js, Express, dan EJS templating engine.
 
 ## Features
 
-- 🏠 **Homepage** - Modern landing page with course showcase
-- 📚 **Course Catalog** - Browse and search courses with filtering
-- 👤 **User Authentication** - Secure login/signup with session management
-- 📱 **Responsive Design** - Mobile-friendly interface
-- 🔒 **Security** - Helmet.js security headers and CSRF protection
-- ⚡ **Performance** - Gzip compression and optimized assets
+- 🏠 **Homepage** - Halaman utama sekolah dengan informasi lengkap
+- 📝 **Pendaftaran Siswa** - Sistem pendaftaran siswa baru online
+- 👤 **Portal Siswa** - Portal khusus untuk siswa dan orang tua
+- 📰 **Berita Sekolah** - Sistem manajemen berita dan pengumuman
+- 🔐 **Admin Panel** - Panel administrasi untuk pengelolaan data
+- 📱 **Responsive Design** - Antarmuka yang mobile-friendly
+- 🔒 **Security** - Keamanan dengan Helmet.js dan CSRF protection
 
 ## Tech Stack
 
 - **Backend**: Node.js, Express.js
+- **Database**: SQLite (Development), MySQL (Production - XAMPP)
 - **Template Engine**: EJS
 - **Authentication**: Express Session, bcryptjs
 - **Security**: Helmet.js, express-validator
@@ -22,10 +24,9 @@ A modern online learning platform built with Node.js, Express, and EJS templatin
 
 ## Installation
 
-1. **Clone the repository**
+1. **Setup Project**
    ```bash
-   git clone <repository-url>
-   cd educrat-ejs
+   cd smaitbaituljannah
    ```
 
 2. **Install dependencies**
@@ -33,15 +34,25 @@ A modern online learning platform built with Node.js, Express, and EJS templatin
    npm install
    ```
 
-3. **Environment Setup**
+3. **Database Setup**
+   
+   **Untuk Development (SQLite):**
+   Database SQLite akan dibuat otomatis di `data/smait_baituljannah.db`
+   
+   **Untuk Production (MySQL dengan XAMPP):**
+   - Pastikan XAMPP MySQL berjalan
+   - Database `smait_baituljannah` akan dibuat otomatis
+   - Konfigurasi default: host=localhost, user=root, password=(kosong)
+   
+   **Environment Setup:**
    ```bash
    cp .env.example .env
    ```
-   Edit `.env` file with your configuration:
+   Edit `.env` file:
    ```env
    PORT=3000
    NODE_ENV=development
-   SESSION_SECRET=your-secure-secret-key
+   SESSION_SECRET=smait-baituljannah-secret
    ```
 
 4. **Start the application**
@@ -59,30 +70,39 @@ A modern online learning platform built with Node.js, Express, and EJS templatin
 ## Project Structure
 
 ```
-educrat-ejs/
-├── app.js                 # Main application file
-├── package.json           # Dependencies and scripts
-├── .env.example          # Environment variables template
-├── views/                # EJS templates
-│   ├── pages/           # Main page templates
-│   └── partials/        # Reusable components
-├── public/              # Static assets
-│   ├── css/            # Stylesheets
-│   ├── js/             # JavaScript files
-│   └── images/         # Image assets
-└── README.md           # Project documentation
+smaitbaituljannah/
+├── app.js                    # Main application file
+├── database.js               # SQLite database configuration
+├── database-mysql.js         # MySQL database configuration (XAMPP)
+├── package.json              # Dependencies and scripts
+├── ecosystem.config.js       # PM2 production configuration
+├── data/                     # Database files
+│   └── smait_baituljannah.db # SQLite database
+├── views/                    # EJS templates
+│   ├── *.ejs                # Page templates
+│   └── partials/            # Reusable components
+├── public/                   # Static assets
+│   ├── css/                 # Stylesheets
+│   ├── js/                  # JavaScript files
+│   └── img/                 # Image assets
+└── README.md                # Project documentation
 ```
 
 ## Available Routes
 
+**Public Routes:**
 - `GET /` - Homepage
-- `GET /courses` - Course catalog
-- `GET /course/:id` - Course details
-- `GET /login` - Login page
-- `POST /login` - Login form handler
-- `GET /signup` - Registration page
-- `POST /signup` - Registration form handler
-- `POST /logout` - Logout handler
+- `GET /daftar-siswa` - Pendaftaran siswa baru
+- `GET /portal-siswa` - Portal siswa
+- `GET /berita` - Halaman berita
+- `GET /konsultasi` - Konsultasi online
+
+**Admin Routes:**
+- `GET /admin/login` - Admin login
+- `GET /admin/dashboard` - Admin dashboard
+- `GET /admin/registrations` - Kelola pendaftaran
+- `GET /admin/news` - Kelola berita
+- `GET /admin/settings` - Pengaturan sistem
 
 ## Authentication
 
@@ -128,7 +148,8 @@ SESSION_SECRET=your-production-secret-key
 - [ ] Configure proper logging
 - [ ] Set up process management (PM2)
 - [ ] Configure reverse proxy (Nginx)
-- [ ] Set up database (if needed)
+- [x] Set up database (SQLite/MySQL)
+- [x] Configure XAMPP MySQL connection
 - [ ] Configure file uploads (if needed)
 
 ### Deployment Platforms

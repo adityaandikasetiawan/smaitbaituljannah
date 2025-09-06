@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Pendaftaran - Admin SMPIT Baituljannah</title>
+    <title>Data Pendaftaran - Admin SMAIT Baituljannah</title>
     <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -212,7 +212,7 @@
                             <i class="fas fa-graduation-cap me-2"></i>
                             Admin Panel
                         </h4>
-                        <small class="opacity-75">SMPIT Baituljannah</small>
+                        <small class="opacity-75">SMAIT Baituljannah</small>
                     </div>
                     <nav class="nav flex-column px-3">
                         <a class="nav-link" href="/admin/dashboard">
@@ -577,16 +577,35 @@
         let table;
         
         $(document).ready(function() {
+            // Check if table has data rows before initializing DataTables
+            const tableBody = $('#registrationsTable tbody');
+            const hasData = tableBody.find('tr').length > 0 && !tableBody.find('tr').first().find('td[colspan]').length;
+            
             table = $('#registrationsTable').DataTable({
                 "pageLength": 25,
                 "ordering": true,
                 "searching": true,
                 "lengthChange": true,
                 "info": true,
-                "order": [[ 7, "desc" ]], // Sort by date descending (index 7)
+                "order": hasData ? [[ 7, "desc" ]] : [], // Sort by date descending only if data exists
                 "columnDefs": [
                     { "orderable": false, "targets": [0, 9] } // Disable sorting on checkbox and action columns
-                ]
+                ],
+                "language": {
+                    "emptyTable": "Belum ada data pendaftaran",
+                    "zeroRecords": "Tidak ada data yang sesuai dengan pencarian",
+                    "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+                    "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+                    "infoFiltered": "(difilter dari _MAX_ total data)",
+                    "lengthMenu": "Tampilkan _MENU_ data per halaman",
+                    "search": "Cari:",
+                    "paginate": {
+                        "first": "Pertama",
+                        "last": "Terakhir",
+                        "next": "Selanjutnya",
+                        "previous": "Sebelumnya"
+                    }
+                }
             });
         });
 

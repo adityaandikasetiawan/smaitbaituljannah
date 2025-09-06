@@ -87,38 +87,46 @@
 :root {
   --color-white: #FFFFFF;
   --color-black: #000000;
-  --color-dark-1: #140342;
-  --color-dark-2: #1A064F;
+  /* SMAIT Baituljannah Primary Colors - Islamic Green & Gold */
+  --color-primary: #2E7D32; /* Islamic Green */
+  --color-primary-light: #66BB6A;
+  --color-primary-dark: #1B5E20;
+  --color-secondary: #FFB300; /* Islamic Gold */
+  --color-secondary-light: #FFD54F;
+  --color-secondary-dark: #FF8F00;
+  --color-accent: #4CAF50; /* Fresh Green */
+  --color-dark-1: #1B5E20;
+  --color-dark-2: #2E7D32;
   --color-dark-3: #6A7A99;
   --color-dark-4: #242239;
-  --color-dark-5: #282664;
-  --color-dark-6: #311F61;
-  --color-dark-7: #EAE9EF;
+  --color-dark-5: #388E3C;
+  --color-dark-6: #2E7D32;
+  --color-dark-7: #E8F5E8;
   --color-dark-8: #202124;
   --color-light-1: #4F547B;
   --color-light-2: #E4E7EA;
-  --color-light-3: #EEF2F6;
+  --color-light-3: #F1F8E9;
   --color-light-4: #F7F8FB;
   --color-light-5: #EDEDED;
-  --color-light-6: #F5F7FE;
-  --color-light-7: #E5F0FD;
+  --color-light-6: #E8F5E8;
+  --color-light-7: #FFF8E1;
   --color-light-8: #DDDDDD;
-  --color-light-9: #EEF2F6;
+  --color-light-9: #F1F8E9;
   --color-light-10: #F4F3F6;
-  --color-light-11: #EBEAFE;
-  --color-light-12: #CCE0F8;
-  --color-purple-1: #1967D2;
-  --color-purple-2: #E5EEFD;
-  --color-purple-3: #F0F4FF;
-  --color-purple-4: #0052CC;
-  --color-purple-5: #E3F2FD;
-  --color-green-1: #00FF84;
-  --color-green-2: #DEF5F0;
-  --color-green-3: #EEF8F5;
-  --color-green-4: #04D697;
-  --color-green-5: #34A853;
-  --color-green-6: #DFF1DD;
-  --color-green-7: #D9FFED;
+  --color-light-11: #E8F5E8;
+  --color-light-12: #C8E6C9;
+  --color-purple-1: #2E7D32;
+  --color-purple-2: #E8F5E8;
+  --color-purple-3: #F1F8E9;
+  --color-purple-4: #1B5E20;
+  --color-purple-5: #E8F5E8;
+  --color-green-1: #4CAF50;
+  --color-green-2: #E8F5E8;
+  --color-green-3: #F1F8E9;
+  --color-green-4: #388E3C;
+  --color-green-5: #66BB6A;
+  --color-green-6: #C8E6C9;
+  --color-green-7: #E8F5E8;
   --color-orange-1: #DC3545;
   --color-orange-2: #F8D7DA;
   --color-orange-3: #FCE4E6;
@@ -129,27 +137,27 @@
   --color-red-1: #DC3545;
   --color-red-2: #F8D7DA;
   --color-red-3: #C82333;
-  --color-beige-1: #FEFBF4;
-  --color-blue-1: #007BFF;
-  --color-blue-2: #E3F2FD;
-  --color-blue-3: #1967D2;
-  --color-blue-4: #0056B3;
-  --color-blue-5: #004085;
-  --color-blue-6: #CCE5FF;
-  --color-blue-7: #B8DAFF;
-  --color-yellow-1: #E59819;
-  --color-yellow-2: #FDF8EB;
-  --color-yellow-3: #ECB53E;
-  --color-yellow-4: #F9AB00;
-  --color-yellow-5: #FCEDCD;
-  --color-info-1: #CDE9F6;
-  --color-info-2: #4780AA;
-  --color-warning-1: #F7F3D7;
-  --color-warning-2: #927238;
+  --color-beige-1: #FFF8E1;
+  --color-blue-1: #2E7D32;
+  --color-blue-2: #E8F5E8;
+  --color-blue-3: #388E3C;
+  --color-blue-4: #1B5E20;
+  --color-blue-5: #2E7D32;
+  --color-blue-6: #C8E6C9;
+  --color-blue-7: #E8F5E8;
+  --color-yellow-1: #FFB300;
+  --color-yellow-2: #FFF8E1;
+  --color-yellow-3: #FFD54F;
+  --color-yellow-4: #FF8F00;
+  --color-yellow-5: #FFECB3;
+  --color-info-1: #E8F5E8;
+  --color-info-2: #2E7D32;
+  --color-warning-1: #FFF8E1;
+  --color-warning-2: #FF8F00;
   --color-error-1: #ECC8C5;
   --color-error-2: #AB3331;
-  --color-success-1: #DEF2D7;
-  --color-success-2: #5B7052;
+  --color-success-1: #E8F5E8;
+  --color-success-2: #2E7D32;
 }
 
 [data-anim-wrap] {
@@ -15676,4 +15684,568 @@ table.table td {
   color: var(--color-purple-1) !important;
   border-radius: 100%;
   background: white;
+}
+
+/* ===== SMAIT Baituljannah Custom Styles ===== */
+
+/* Islamic Glow Animation */
+@keyframes islamicGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.islamic-glow {
+  animation: islamicGlow 2s ease-in-out infinite;
+}
+
+/* Islamic Pattern Background */
+.islamic-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(45, 80, 22, 0.1) 2px, transparent 2px);
+  background-size: 40px 40px;
+}
+
+/* Custom Islamic Card Style */
+.islamic-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.islamic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.islamic-card:hover::before {
+  left: 100%;
+}
+
+.islamic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(45, 80, 22, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* Islamic Button Styles */
+.btn-islamic {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  padding: 12px 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-islamic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-islamic:hover::before {
+  left: 100%;
+}
+
+.btn-islamic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+/* Islamic Typography */
+.islamic-title {
+  position: relative;
+  display: inline-block;
+}
+
+.islamic-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  border-radius: 2px;
+}
+
+/* Button Pendaftaran Styling */
+.button.-green-1 {
+  background-color: #2D5016 !important;
+  border: 2px solid #2D5016 !important;
+  transition: all 0.3s ease;
+}
+
+.button.-green-1:hover {
+  background-color: #1a2f0c !important;
+  border-color: #1a2f0c !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+}
+
+.button.-outline-green-1 {
+  background-color: transparent !important;
+  border: 2px solid #2D5016 !important;
+  color: #2D5016 !important;
+  transition: all 0.3s ease;
+}
+
+.button.-outline-green-1:hover {
+  background-color: #2D5016 !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(45, 80, 22, 0.3);
+}
+
+.text-green-1 {
+  color: #2D5016 !important;
+}
+
+/* SMAIT Baituljannah Header Enhancement */
+.header__logo img {
+  filter: drop-shadow(0 2px 8px rgba(45, 80, 22, 0.2));
+  transition: all 0.3s ease;
+}
+
+.header__logo:hover img {
+  filter: drop-shadow(0 4px 12px rgba(45, 80, 22, 0.3));
+  transform: scale(1.05);
+}
+
+/* Banner Slider Islamic Enhancement */
+.banner-slide {
+  position: relative;
+}
+
+.banner-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(45, 80, 22, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+  pointer-events: none;
+}
+
+/* Islamic Section Divider */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-primary) 20%, var(--color-secondary) 50%, var(--color-primary) 80%, transparent 100%);
+  margin: 40px 0;
+}
+
+/* Responsive Islamic Elements */
+@media (max-width: 768px) {
+  .islamic-card {
+    margin-bottom: 20px;
+  }
+  
+  .btn-islamic {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  
+  .islamic-title::after {
+    width: 40px;
+    height: 2px;
+  }
+}
+
+/* Footer Islamic Enhancement */
+.footer {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
+}
+
+/* ===== INFORMASI PENDAFTARAN PAGE STYLES ===== */
+
+/* Hero Section Styles */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+}
+
+.decoration-circle {
+  border-radius: 50%;
+}
+
+.hero-icon {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-stats .stat-item {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.hero-stats .stat-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Requirements Section Styles */
+.requirements-section {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.requirements-list .requirement-item {
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.requirements-list .requirement-item:hover {
+  transform: translateX(10px);
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+/* Timeline Styles */
+.timeline-section {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.timeline-step {
+  transition: all 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-5px);
+}
+
+.step-indicator {
+  position: relative;
+  z-index: 2;
+}
+
+.step-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 50px;
+  height: 2px;
+  background: #e5e7eb;
+  transform: translateY(-50%);
+}
+
+.timeline-step:last-child .step-indicator::after {
+  display: none;
+}
+
+.feature-tag {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Pricing Section Styles */
+.pricing-section {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.pricing-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card .decoration-circle {
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:hover .decoration-circle {
+  transform: scale(1.1);
+}
+
+.feature-item {
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateX(5px);
+}
+
+/* Schedule Section Styles */
+.schedule-section {
+  background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+}
+
+.schedule-table {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.table-row {
+  transition: all 0.3s ease;
+}
+
+.table-row:hover {
+  background: rgba(16, 185, 129, 0.05);
+  transform: scale(1.02);
+}
+
+.activity-info, .date-info, .time-info, .location-info {
+  transition: all 0.3s ease;
+}
+
+.table-row:hover .activity-info,
+.table-row:hover .date-info,
+.table-row:hover .time-info,
+.table-row:hover .location-info {
+  transform: translateX(5px);
+}
+
+.status-badge {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
+  to { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
+}
+
+/* Contact Section Styles */
+.contact-section {
+  position: relative;
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.contact-card, .social-card {
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover, .social-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-item, .social-item {
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.social-item:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.hover-transform:hover {
+  transform: translateY(-2px);
+}
+
+/* CTA Section Styles */
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.cta-icon {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.btn-cta {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-cta-outline {
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-outline:hover {
+  background: white;
+  color: #10b981 !important;
+  transform: translateY(-3px);
+}
+
+.stat-item {
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.1);
+}
+
+/* Utility Classes */
+.size-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.size-60 {
+  width: 60px;
+  height: 60px;
+}
+
+.size-80 {
+  width: 80px;
+  height: 80px;
+}
+
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-opacity-20 {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.opacity-90 {
+  opacity: 0.9;
+}
+
+.max-width-600 {
+  max-width: 600px;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+.rounded-16 {
+  border-radius: 16px;
+}
+
+.rounded-12 {
+  border-radius: 12px;
+}
+
+.rounded-8 {
+  border-radius: 8px;
+}
+
+.shadow-4 {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-2 {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Color Classes */
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.bg-pink-500 {
+  background-color: #ec4899;
+}
+
+.bg-red-500 {
+  background-color: #ef4444;
+}
+
+.bg-green-500 {
+  background-color: #10b981;
+}
+
+.bg-orange-1 {
+  background-color: #f97316;
+}
+
+.bg-purple-1 {
+  background-color: #8b5cf6;
+}
+
+.text-purple-1 {
+  color: #8b5cf6;
 }

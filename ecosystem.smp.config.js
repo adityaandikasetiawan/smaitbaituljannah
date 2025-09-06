@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'smpit-baituljannah',
+    name: 'smait-baituljannah',
     script: 'app.js',
     instances: 1,
     autorestart: true,
@@ -14,9 +14,9 @@ module.exports = {
       DB_HOST: 'localhost',
       DB_USER: 'root',
       DB_PASSWORD: 'Corei7gen',
-      DB_NAME: 'smp_baitul_jannah_db',
-      SESSION_SECRET: 'smpbaituljannahsecretkey',
-      APP_TYPE: 'SMP'
+      DB_NAME: 'smait_baitul_jannah_db',
+      SESSION_SECRET: 'smaitbaituljannahsecretkey',
+      APP_TYPE: 'SMAIT'
     }
   }]
 };
