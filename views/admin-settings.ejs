@@ -9,11 +9,11 @@
     <link rel="icon" type="image/x-icon" href="/img/general/favicon.ico">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --secondary-blue: #1e40af;
-            --light-blue: #dbeafe;
-            --dark-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
+            --primary-green: #2E7D32;
+            --secondary-green: #388E3C;
+            --light-green: #C8E6C9;
+            --dark-green: #1B5E20;
+            --accent-green: #4CAF50;
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --border-light: #e2e8f0;
@@ -29,10 +29,10 @@
         }
         
         .sidebar {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
             min-height: 100vh;
             color: white;
-            box-shadow: 4px 0 20px rgba(37, 99, 235, 0.15);
+            box-shadow: 4px 0 20px rgba(46, 125, 50, 0.15);
         }
         
         .sidebar .nav-link {
@@ -60,7 +60,7 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 8px 32px rgba(46, 125, 50, 0.08);
             border: 1px solid var(--border-light);
             margin-bottom: 2rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -68,17 +68,17 @@
         
         .settings-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
+            box-shadow: 0 12px 40px rgba(46, 125, 50, 0.12);
         }
         
         .settings-header {
-            border-bottom: 2px solid var(--light-blue);
+            border-bottom: 2px solid var(--light-green);
             padding-bottom: 1rem;
             margin-bottom: 1.5rem;
         }
         
         .settings-title {
-            color: var(--primary-blue);
+            color: var(--primary-green);
             font-weight: 700;
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
@@ -90,18 +90,18 @@
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
             border: none;
             border-radius: 12px;
             padding: 0.75rem 1.5rem;
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
         }
         
         .btn-success {
@@ -143,8 +143,8 @@
         }
         
         .form-control:focus, .form-select:focus {
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
         }
         
         .form-label {
@@ -165,14 +165,14 @@
             border-radius: 16px;
             padding: 1.5rem;
             text-align: center;
-            box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 4px 16px rgba(46, 125, 50, 0.08);
             border: 1px solid var(--border-light);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .stat-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.12);
         }
         
         .stat-icon {
@@ -275,7 +275,7 @@
         }
         
         input:checked + .slider {
-            background-color: var(--primary-blue);
+            background-color: var(--primary-green);
         }
         
         input:checked + .slider:before {
@@ -289,9 +289,9 @@
         
         .activity-item {
             padding: 1rem;
-            border-left: 3px solid var(--light-blue);
+            border-left: 3px solid var(--light-green);
             margin-bottom: 1rem;
-            background: rgba(37, 99, 235, 0.02);
+            background: rgba(46, 125, 50, 0.02);
             border-radius: 0 8px 8px 0;
         }
         
@@ -327,6 +327,10 @@
                         <a class="nav-link" href="/admin/registrations">
                             <i class="fas fa-users me-2"></i>
                             Data Pendaftaran
+                        </a>
+                        <a class="nav-link" href="/admin/news">
+                            <i class="fas fa-newspaper me-2"></i>
+                            Berita
                         </a>
                         <a class="nav-link active" href="/admin/settings">
                             <i class="fas fa-cog me-2"></i>
@@ -368,7 +372,7 @@
                     <!-- System Statistics -->
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);">
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="stat-value" id="totalAdmins">0</div>
@@ -791,7 +795,7 @@
                 const adminId = $(this).data('id');
                 deleteAdmin(adminId);
             });
-        });
+        }); // End of document ready function
 
         // Load system statistics
         function loadSystemStats() {
@@ -1058,7 +1062,7 @@
             }
         }
         
-    }); // End of document ready function
+    });
 
     </script>
 </body>

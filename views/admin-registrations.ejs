@@ -9,11 +9,11 @@
     <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --secondary-blue: #1e40af;
-            --light-blue: #dbeafe;
-            --dark-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
+            --primary-green: #2E7D32;
+            --secondary-green: #388E3C;
+            --light-green: #C8E6C9;
+            --dark-green: #1B5E20;
+            --accent-green: #4CAF50;
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --border-light: #e2e8f0;
@@ -26,10 +26,10 @@
         }
         
         .sidebar {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
             min-height: 100vh;
             color: white;
-            box-shadow: 4px 0 20px rgba(37, 99, 235, 0.15);
+            box-shadow: 4px 0 20px rgba(46, 125, 50, 0.15);
         }
         
         .sidebar .nav-link {
@@ -62,7 +62,7 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08);
             border: 1px solid var(--border-light);
         }
         
@@ -81,9 +81,9 @@
         }
         
         .status-approved {
-            background: linear-gradient(135deg, var(--light-blue) 0%, #bfdbfe 100%);
-            color: var(--secondary-blue);
-            border: 1px solid var(--primary-blue);
+            background: linear-gradient(135deg, var(--light-green) 0%, #A5D6A7 100%);
+            color: var(--secondary-green);
+            border: 1px solid var(--primary-green);
         }
         
         .status-rejected {
@@ -103,13 +103,13 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08);
             margin-bottom: 2rem;
             border: 1px solid var(--border-light);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
             border: none;
             border-radius: 12px;
             padding: 0.75rem 1.5rem;
@@ -118,9 +118,9 @@
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
         }
         
         .form-control, .form-select {
@@ -131,13 +131,13 @@
         }
         
         .form-control:focus, .form-select:focus {
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
         }
         
         .table th {
-            background: linear-gradient(135deg, var(--light-blue) 0%, #e0f2fe 100%);
-            color: var(--secondary-blue);
+            background: linear-gradient(135deg, var(--light-green) 0%, #E8F5E8 100%);
+            color: var(--secondary-green);
             font-weight: 700;
             border: none;
             padding: 1rem;
@@ -167,7 +167,7 @@
         }
         
         .bulk-actions {
-            background: var(--light-blue);
+            background: var(--light-green);
             border-radius: 15px;
             padding: 1rem;
             margin-bottom: 1rem;
@@ -178,15 +178,15 @@
             background: white;
             border-radius: 15px;
             padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.08);
-            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.08);
+            border-left: 4px solid var(--primary-green);
         }
         
         .avatar-circle {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -195,7 +195,7 @@
         }
         
         .registration-row:hover {
-            background-color: rgba(37, 99, 235, 0.02);
+            background-color: rgba(46, 125, 50, 0.02);
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
@@ -222,6 +222,10 @@
                         <a class="nav-link active" href="/admin/registrations">
                             <i class="fas fa-users me-2"></i>
                             Data Pendaftaran
+                        </a>
+                        <a class="nav-link" href="/admin/news">
+                            <i class="fas fa-newspaper me-2"></i>
+                            Berita
                         </a>
                         <a class="nav-link" href="/admin/settings">
                             <i class="fas fa-cog me-2"></i>
@@ -533,7 +537,7 @@
                                         <% }); %>
                                     <% } else { %>
                                         <tr>
-                                            <td colspan="9" class="text-center text-muted py-4">
+                                            <td colspan="10" class="text-center text-muted py-4">
                                                 <i class="fas fa-inbox fa-2x mb-3 d-block"></i>
                                                 Belum ada data pendaftaran
                                             </td>
@@ -579,9 +583,31 @@
         $(document).ready(function() {
             // Check if table has data rows before initializing DataTables
             const tableBody = $('#registrationsTable tbody');
-            const hasData = tableBody.find('tr').length > 0 && !tableBody.find('tr').first().find('td[colspan]').length;
+            const tableRows = tableBody.find('tr');
+            const hasData = tableRows.length > 0 && !tableRows.first().find('td[colspan]').length;
             
-            table = $('#registrationsTable').DataTable({
+            // Try to initialize DataTables with error handling
+            try {
+                // Validate table structure before initializing DataTables
+                if (hasData) {
+                    const headerCols = $('#registrationsTable thead tr th').length;
+                    let validStructure = true;
+                    
+                    tableRows.each(function() {
+                        const rowCols = $(this).find('td').length;
+                        if (rowCols !== headerCols) {
+                            validStructure = false;
+                            console.warn('Registrations table - Row column mismatch:', rowCols, 'vs header:', headerCols);
+                        }
+                    });
+                    
+                    if (!validStructure) {
+                        console.error('Registrations table structure invalid, using basic table');
+                        return;
+                    }
+                }
+                
+                table = $('#registrationsTable').DataTable({
                 "pageLength": 25,
                 "ordering": true,
                 "searching": true,
@@ -607,6 +633,15 @@
                     }
                 }
             });
+            } catch (error) {
+                console.error('DataTables initialization failed:', error);
+                console.log('Using basic table without DataTables functionality');
+                // Add basic styling for table without DataTables
+                $('#registrationsTable tbody tr').hover(
+                    function() { $(this).addClass('table-active'); },
+                    function() { $(this).removeClass('table-active'); }
+                );
+            }
         });
 
         // Legacy function - redirects to advanced filters

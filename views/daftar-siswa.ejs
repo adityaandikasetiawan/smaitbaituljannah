@@ -178,37 +178,7 @@
     <div class="preloader__title">SMAIT Baituljannah</div>
   </div>
 
-  <!-- Header -->
-  <header data-anim="fade" data-add-bg="" class="header -type-4 -shadow bg-white border-bottom-light js-header">
-    <div class="header__container py-10">
-      <div class="row justify-between items-center">
-        
-        <div class="col-auto">
-          <div class="header-left d-flex items-center">
-            
-            <div class="header__logo pr-30 xl:pr-20 md:pr-0">
-              <a data-barba href="/">
-                <img src="/img/logo-sma.webp" alt="SMAIT Baituljannah" style="max-height: 50px; width: auto;">
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-auto">
-          <div class="d-flex items-center">
-            <div class="header-menu">
-              <div class="header-menu__content">
-                <div class="d-flex items-center">
-                  <a href="/login" class="button -sm -outline-blue-1 text-blue-1 ml-30">Portal Siswa</a>
-                  <a href="/" class="button -sm -blue-1 text-white ml-30">Beranda</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+  <%- include('partials/header') %>
 
   <!-- Main Content -->
   <main class="registration-container">
@@ -408,72 +378,7 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer -type-1 bg-dark-1">
-    <div class="container">
-      <div class="row y-gap-30 justify-between pt-60 pb-60">
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="footer-header">
-            <div class="footer-header__logo">
-              <img src="/img/general/logo-white.svg" alt="SMAIT Baituljannah">
-            </div>
-            <p class="footer-header__text text-17 text-white mt-20">
-              SMAIT Baituljannah - Membentuk Generasi Islami yang Cerdas dan Berakhlak Mulia
-            </p>
-          </div>
-        </div>
-        
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="footer-header">
-            <h4 class="footer-header__title text-white">Kontak Kami</h4>
-            <div class="footer-header__content mt-20">
-              <p class="text-white"><i class="fas fa-map-marker-alt"></i> Jl. Pendidikan No. 123, Jakarta Selatan</p>
-              <p class="text-white"><i class="fas fa-phone"></i> (021) 1234-5678</p>
-              <p class="text-white"><i class="fas fa-envelope"></i> info@smaitbaituljannah.sch.id</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="footer-header">
-            <h4 class="footer-header__title text-white">Jam Operasional</h4>
-            <div class="footer-header__content mt-20">
-              <p class="text-white">Senin - Jumat: 07:00 - 16:00</p>
-              <p class="text-white">Sabtu: 07:00 - 12:00</p>
-              <p class="text-white">Minggu: Tutup</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="footer-header">
-            <h4 class="footer-header__title text-white">Media Sosial</h4>
-            <div class="footer-header__content mt-20">
-              <div class="footer-header-socials">
-                <a href="#" class="size-40 d-flex justify-center items-center rounded-8 bg-white">
-                  <i class="fab fa-facebook-f text-dark-1"></i>
-                </a>
-                <a href="#" class="size-40 d-flex justify-center items-center rounded-8 bg-white ml-10">
-                  <i class="fab fa-instagram text-dark-1"></i>
-                </a>
-                <a href="#" class="size-40 d-flex justify-center items-center rounded-8 bg-white ml-10">
-                  <i class="fab fa-youtube text-dark-1"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="py-30 border-top-light">
-        <div class="row justify-between items-center">
-          <div class="col-auto">
-            <p class="text-13 text-white">© 2024 SMAIT Baituljannah. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <%- include('partials/footer') %>
 
   <!-- JavaScript -->
   <script src="/js/vendors.js"></script>

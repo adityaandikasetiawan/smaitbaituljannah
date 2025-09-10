@@ -9,11 +9,11 @@
     <link href="/css/datatables/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #2563eb;
-            --secondary-blue: #1e40af;
-            --light-blue: #dbeafe;
-            --dark-blue: #1e3a8a;
-            --accent-blue: #3b82f6;
+            --primary-green: #2E7D32;
+            --secondary-green: #388E3C;
+            --light-green: #4CAF50;
+            --dark-green: #1B5E20;
+            --accent-green: #66BB6A;
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --border-light: #e2e8f0;
@@ -25,10 +25,10 @@
             color: var(--text-dark);
         }
         .sidebar {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
             min-height: 100vh;
             color: white;
-            box-shadow: 4px 0 20px rgba(37, 99, 235, 0.15);
+            box-shadow: 4px 0 20px rgba(46, 125, 50, 0.15);
         }
         .sidebar .nav-link {
             color: rgba(255,255,255,0.9);
@@ -52,13 +52,13 @@
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 8px 32px rgba(37, 99, 235, 0.08);
+            box-shadow: 0 8px 32px rgba(46, 125, 50, 0.08);
             border: 1px solid var(--border-light);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .stats-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(37, 99, 235, 0.12);
+            box-shadow: 0 12px 40px rgba(46, 125, 50, 0.12);
         }
         .stats-icon {
             width: 60px;
@@ -192,9 +192,9 @@
                         <div class="col-md-3 mb-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);">
-                                        <i class="fas fa-users"></i>
-                                    </div>
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);">
+                        <i class="fas fa-users"></i>
+                    </div>
                                     <div class="ms-3">
                                         <div class="stat-value"><%= stats.total %></div>
                                         <div class="stat-label">Total Pendaftar</div>
@@ -205,9 +205,9 @@
                         <div class="col-md-3 mb-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--accent-blue) 0%, var(--primary-blue) 100%);">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--accent-green) 0%, var(--primary-green) 100%);">
+                        <i class="fas fa-clock"></i>
+                    </div>
                                     <div class="ms-3">
                                         <div class="stat-value"><%= stats.pending %></div>
                                         <div class="stat-label">Menunggu Review</div>
@@ -218,9 +218,9 @@
                         <div class="col-md-3 mb-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);">
-                                        <i class="fas fa-check-circle"></i>
-                                    </div>
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-green) 100%);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
                                     <div class="ms-3">
                                         <div class="stat-value"><%= stats.approved %></div>
                                         <div class="stat-label">Diterima</div>
@@ -231,9 +231,9 @@
                         <div class="col-md-3 mb-3">
                             <div class="stats-card">
                                 <div class="d-flex align-items-center">
-                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--light-blue) 100%);">
-                                        <i class="fas fa-calendar-day"></i>
-                                    </div>
+                                    <div class="stats-icon" style="background: linear-gradient(135deg, var(--secondary-green) 0%, var(--light-green) 100%);">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
                                     <div class="ms-3">
                                         <div class="stat-value"><%= stats.today %></div>
                                         <div class="stat-label">Hari Ini</div>
@@ -257,7 +257,7 @@
                         </div>
                         
                         <div class="table-responsive">
-                            <table class="table table-hover" id="registrationsTable">
+                            <table class="table table-hover" id="dashboardRegistrationsTable">
                                 <thead class="table-light">
                                     <tr>
                                         <th>No</th>
@@ -316,31 +316,28 @@
         </div>
     </div>
 
+    <style>
+        .table-hover-effect {
+            background-color: rgba(46, 125, 50, 0.05) !important;
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+    </style>
+    
     <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/js/jquery/jquery-3.7.0.min.js"></script>
-    <script src="/js/datatables/jquery.dataTables.min.js"></script>
-    <script src="/js/datatables/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Check if table has data rows before initializing DataTables
-            const tableBody = $('#registrationsTable tbody');
-            const hasData = tableBody.find('tr').length > 0 && !tableBody.find('tr').first().find('td[colspan]').length;
-            
-            $('#registrationsTable').DataTable({
-                "pageLength": 10,
-                "ordering": hasData,
-                "searching": false,
-                "lengthChange": false,
-                "info": false,
-                "paging": false,
-                "columnDefs": hasData ? [] : [
-                    { "orderable": false, "targets": "_all" }
-                ],
-                "language": {
-                    "emptyTable": "Belum ada data pendaftaran",
-                    "zeroRecords": "Tidak ada data yang sesuai"
+            // Dashboard table doesn't need DataTables functionality
+            // Just add basic hover effects and styling
+            $('#dashboardRegistrationsTable tbody tr').hover(
+                function() {
+                    $(this).addClass('table-hover-effect');
+                },
+                function() {
+                    $(this).removeClass('table-hover-effect');
                 }
-            });
+            );
         });
     </script>
 </body>
